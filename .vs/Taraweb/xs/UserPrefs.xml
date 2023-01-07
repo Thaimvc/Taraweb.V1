@@ -1,23 +1,47 @@
 ﻿<Properties StartupConfiguration="{A872AEEB-BDD2-4579-BE5F-6934E90A46A7}|Default">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Shared/M1Frontend/M1Layout.razor">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/neab/Projects/Taraweb.V1/Controllers/UploadController.cs" relfile="Controllers/UploadController.cs" line="59" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.Taraweb PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Pages/_Layout.cshtml">
     <Files>
       <File FileName="Pages/CMS/Login.razor" />
-      <File FileName="Pages/CMS/Index.razor" Line="16" Column="8" />
+      <File FileName="Pages/CMS/Index.razor" />
       <File FileName="Controllers/AccountController.cs" />
       <File FileName="Program.cs" />
-      <File FileName="Shared/cms/MainLayout.razor" Line="22" Column="39" />
-      <File FileName="Shared/M1Frontend/M1Layout.razor" Line="34" Column="27" />
+      <File FileName="Shared/cms/MainLayout.razor" />
+      <File FileName="Shared/M1Frontend/M1Layout.razor" Line="34" Column="28" />
+      <File FileName="Shared/M1Frontend/NavMenu.razor" Line="1" Column="1" />
+      <File FileName="appsettings.json" Line="1" Column="1" />
+      <File FileName="Pages/_Layout.cshtml" Line="82" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Taraweb" expanded="True">
             <Node name="Taraweb" expanded="True">
+              <Node name="Pages" expanded="True">
+                <Node name="CMS" expanded="True" />
+              </Node>
               <Node name="Shared" expanded="True">
                 <Node name="cms" expanded="True" />
-                <Node name="M1Frontend" expanded="True">
-                  <Node name="M1Layout.razor" selected="True" />
+                <Node name="M1Frontend" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="M1" expanded="True">
+                  <Node name="assets" expanded="True" selected="True">
+                    <Node name="bootstrap" expanded="True">
+                      <Node name="css" expanded="True" />
+                      <Node name="js" expanded="True" />
+                    </Node>
+                    <Node name="js" expanded="True" />
+                  </Node>
+                  <Node name="css" expanded="True" />
                 </Node>
               </Node>
               <Node name="appsettings.json" expanded="True" />
@@ -27,12 +51,4 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/neab/Projects/Taraweb.V1/Controllers/UploadController.cs" relfile="Controllers/UploadController.cs" line="59" column="1" />
-    </BreakpointStore>
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Taraweb PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>
