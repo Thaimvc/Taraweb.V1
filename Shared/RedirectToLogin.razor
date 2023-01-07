@@ -1,0 +1,27 @@
+﻿@inject NavigationManager NavigationManager
+
+@code {
+    [Parameter]
+    public bool IsAuthenticated { get; set; }
+
+    protected override void OnAfterRender(bool isfirstrender)
+    {
+        if (!IsAuthenticated)
+        {
+            var redirectUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+            if (!string.IsNullOrEmpty(redirectUrl))
+            {
+                var a = Uri.EscapeDataString(redirectUrl);
+                NavigationManager.NavigateTo($"cms/login?redirectUrl={Uri.EscapeDataString(redirectUrl)}", true);
+            }
+            else
+            {
+                NavigationManager.NavigateTo("cms/login", true);
+            }
+        }
+        else
+        {
+            NavigationManager.NavigateTo("Unauthorized", true);
+        }
+    }
+}

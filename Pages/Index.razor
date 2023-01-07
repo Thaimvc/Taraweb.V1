@@ -1,0 +1,29 @@
+@page "/"
+
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+@inject DialogService DialogService
+@inject ContextMenuService ContextMenuService
+@inject TooltipService TooltipService
+@inject NotificationService NotificationService
+
+<PageTitle>Index</PageTitle>
+<RadzenContent Container="main">
+    <RadzenHeading Size="H1" Text="Hello, world!" />
+    <p>Welcome to your new Radzen Blazor Server application.</p>
+</RadzenContent>
+
+@code {
+    protected override void OnInitialized()
+        {
+            base.OnInitialized();
+            
+        }
+
+        protected override void OnAfterRender(bool firstRender)
+        {
+            
+            NavigationManager.NavigateTo("/web/th/");
+        }
+
+}

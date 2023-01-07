@@ -1,0 +1,192 @@
+﻿@page "/cms/Postform"
+@page "/cms/Postform/{id:int}"
+@layout Taraweb.Shared.cms.MainLayout
+@using Taraweb.Models.TarawebM1;
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+@inject DialogService DialogService
+@inject ContextMenuService ContextMenuService
+@inject TooltipService TooltipService
+@inject NotificationService NotificationService
+@inject TarawebM1Service sv;
+@using Data;
+<h3>Post Form</h3>
+<RadzenTemplateForm TItem="Post" Data="Posts" Submit="@FormSubmit">
+    <div style="margin-bottom: 1rem" class="row">
+        <div class="col-md-3">
+            <RadzenLabel Text="PageCategory" Component="PageCategory" style="width: 100%" />
+        </div>
+        <div class="col-md-9">
+            <RadzenDropDown Data="@PageCategories" TextProperty="CategoryCode" ValueProperty="Id"
+                            Placeholder="Choose PageCategory" style="display: block; width: 100%" @bind-Value="@Posts.PageCategoryId" Name="PageCategoryId" />
+            <RadzenRequiredValidator Component="PageCategoryId" DefaultValue="0" Text="PageCategory is required" style="position: absolute" />
+        </div>
+    </div>
+    <div style="margin-bottom: 1rem" class="row">
+        <div class="col-md-3">
+            <RadzenLabel Text="Banner" Component="Gallery" style="width: 100%" />
+        </div>
+        <div class="col-md-9">
+            <RadzenImage Path="@bannerpath" Visible="@showbanner" Style="height:100px"></RadzenImage>
+            <RadzenUpload Url="upload/single" Accept="image/*" Complete="OnComplete"></RadzenUpload>
+        </div>
+    </div>
+
+    <RadzenTabs>
+        <Tabs>
+            @foreach (var content in Posts.PostContents)
+            {
+                <RadzenTabsItem Text="@content.Language.Code">
+                    <div style="margin-bottom: 1rem" class="row">
+                        <div class="col-md-3">
+                            <RadzenLabel Text="Title" Component="Title" style="width: 100%" />
+                        </div>
+                        <div class="col-md-9">
+                            <RadzenTextBox Name="Title" @bind-Value="@content.Title" style="display: block; width: 100%" Change="@(arg=>OnChangeText(arg, content))"></RadzenTextBox>
+
+                            <RadzenRequiredValidator Component="Title" Text="Title is required" style="position: absolute" />
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 1rem" class="row">
+                        <div class="col-md-12">
+                            <RadzenLabel Text="Slug" Component="Slug" />: @content.Slug
+                        </div>
+
+                    </div>
+                    <div style="margin-bottom: 1rem" class="row">
+                        <div class="col-md-3">
+                            <RadzenLabel Text="Content" Component="Content" style="width: 100%" />
+                        </div>
+                        <div class="col-md-9">
+                            <RadzenHtmlEditor Name="Content" @bind-Value="@content.Content" Style="height: 500px" UploadUrl="upload/image"></RadzenHtmlEditor>
+                            <RadzenRequiredValidator Component="Content" Text="Content is required" style="position: absolute" />
+                        </div>
+                    </div>
+                </RadzenTabsItem>
+            }
+
+
+        </Tabs>
+    </RadzenTabs>
+    <div style="margin-bottom: 1rem" class="row">
+        <div class="col-md-3">
+            <RadzenLabel Text="IsActive" Component="IsActive" style="width: 100%" />
+        </div>
+        <div class="col-md-9">
+            <RadzenCheckBox @bind-Value="@Posts.IsActive" Name="IsActive" />
+        </div>
+    </div>
+
+    <div style="margin-bottom: 1rem" class="row">
+        <div class="col-md-3">
+            <RadzenLabel Text="DateStart" Component="DateStart" style="width: 100%" />
+        </div>
+        <div class="col-md-9">
+            <RadzenDatePicker DateFormat="dd/MM/yyyy" style="display: block; width: 100%" @bind-Value="@Posts.DateStart" Name="DateStart" />
+            <RadzenRequiredValidator Component="DateStart" Text="DateStart is required" style="position: absolute" />
+        </div>
+    </div>
+    <div style="margin-bottom: 1rem" class="row">
+        <div class="col-md-3">
+            <RadzenLabel Text="DateFinish" Component="DateFinish" style="width: 100%" />
+        </div>
+        <div class="col-md-9">
+            <RadzenDatePicker DateFormat="dd/MM/yyyy" style="display: block; width: 100%" @bind-Value="@Posts.DateFinish" Name="DateFinish" />
+            <RadzenRequiredValidator Component="DateFinish" Text="DateFinish is required" style="position: absolute" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col offset-sm-3">
+            <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" ButtonStyle="ButtonStyle.Primary" />
+            <RadzenButton ButtonStyle="ButtonStyle.Light" style="margin-left: 1rem" Text="Cancel" Click="@CancelButtonClick" />
+        </div>
+    </div>
+  
+</RadzenTemplateForm>
+
+@code {
+    [Parameter]
+    public int? id { get; set; }
+
+    public Post Posts { get; set; }
+
+    public IEnumerable<PostContent> PostContents { get; set; }
+    public IEnumerable<Language> languages { get; set; }
+    public IEnumerable<PageCategory> PageCategories { get; set; }
+    public bool showbanner { get; set; } = false;
+    public string bannerpath { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        PageCategories = await sv.GetPageCategories();
+        if (id == null)
+        {
+            languages = await sv.GetLanguages();
+            Posts = new Post();
+            Posts.DateStart = DateTime.Today;
+            Posts.DateFinish = DateTime.Today.AddYears(1);
+            Posts.PostContents = new List<PostContent>();
+            foreach (var lang in languages)
+            {
+                var pc = new PostContent();
+                pc.Language = lang;
+                pc.Title = "";
+                pc.Content = "";
+                pc.Slug = "";
+                Posts.PostContents.Add(pc);
+            }
+        }
+        else
+        {
+            Posts = await sv.GetPostById(id.Value);
+        }
+
+    }
+
+    protected async Task FormSubmit()
+    {
+        try
+        {
+            if(Posts.Id == 0)
+            {
+                await sv.CreatePost(Posts);
+        }
+        else
+        {
+                await sv.UpdatePost(Posts.Id, Posts);
+        }
+
+            // NavigationManager.NavigateTo("/cms/posts");
+        }
+        catch (Exception ex)
+        {
+            NotificationService.Notify(new NotificationMessage
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = $"Error",
+                Detail = $"Unable to update Post"
+            });
+        }
+    }
+
+    protected async Task CancelButtonClick(MouseEventArgs args)
+    {
+        NavigationManager.NavigateTo("/cms/posts");
+    }
+
+    void OnChangeText(string value, PostContent content)
+    {
+        var a = Utils.CreateSlug(value);
+        content.Slug = a;
+    }
+
+    void OnComplete(UploadCompleteEventArgs args)
+    {
+        var obj = Newtonsoft.Json.JsonConvert.DeserializeObject<UploadResponseModel>(args.RawResponse);
+        bannerpath = obj.Url;
+        Posts.GalleryId = obj.id;
+        showbanner = true;
+        Console.WriteLine($"Server response: {args.RawResponse}");
+    }
+}
+

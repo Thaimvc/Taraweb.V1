@@ -1,0 +1,59 @@
+
+@inject ILocalStorageService localStorage
+@using Microsoft.JSInterop
+@inject IJSRuntime JSRuntime
+<RadzenTextBox Placeholder="Search ..." style="display: block; margin-bottom: 10px; width: 100%" @oninput="@Search" Visible="@showsearch"/>
+<div class="row">
+    @foreach (var news in newslist)
+    {
+        <div class="col-lg-3 col-xl-4">
+            <div class="card" style="border-radius: 0;">
+
+                <div class="card-body">
+                    <div style="width:100%;height:280px; background-image:url(@news.Post.Gallery.Url); background-position:center; background-repeat:no-repeat;background-size:cover"></div>
+
+                </div>
+                <div class="card-footer" style="height:90px">
+                    <a href="/web/@lang/view/@news.Slug">@news.Title</a>
+                    <div class="text-start"><i class="bi bi-clock"></i> <span style="font-size:0.7rem">@news.Post.DateCreate.ToString("dd MMM yyyy")</span></div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
+@code {
+    [Parameter]
+    public int size { get; set; }
+    [Parameter]
+    public int catid { get; set; }
+    [Parameter]
+    public string lang { get; set; }
+
+    [Parameter]
+    public bool showsearch { get; set; } = true;
+    [Inject]
+    TarawebM1Service sv { get; set; }
+    protected string search = "";
+    protected async Task Search(ChangeEventArgs args)
+    {
+        search = $"{args.Value}";
+
+
+        newslist = await sv.GetPostContentByCategoryId(1, lang, new Query { Expand = "Post,Language,Post.Gallery", Filter = $@"i => i.Content.Contains(@0) && i.Post.PageCategoryId=@1", FilterParameters = new object[] { search , catid}, Top = size, OrderBy = "Id desc" });
+    }
+
+    protected IEnumerable<Models.TarawebM1.PostContent> newslist;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        newslist = await sv.GetPostContentByCategoryId(catid, lang, new Query { Expand = "Post,Language,Post.Gallery", Top = size, OrderBy = "Id desc" });
+
+
+    }
+
+}
+

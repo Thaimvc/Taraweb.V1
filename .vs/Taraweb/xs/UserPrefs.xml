@@ -1,0 +1,38 @@
+﻿<Properties StartupConfiguration="{A872AEEB-BDD2-4579-BE5F-6934E90A46A7}|Default">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Shared/M1Frontend/M1Layout.razor">
+    <Files>
+      <File FileName="Pages/CMS/Login.razor" />
+      <File FileName="Pages/CMS/Index.razor" Line="16" Column="8" />
+      <File FileName="Controllers/AccountController.cs" />
+      <File FileName="Program.cs" />
+      <File FileName="Shared/cms/MainLayout.razor" Line="22" Column="39" />
+      <File FileName="Shared/M1Frontend/M1Layout.razor" Line="34" Column="27" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Taraweb" expanded="True">
+            <Node name="Taraweb" expanded="True">
+              <Node name="Shared" expanded="True">
+                <Node name="cms" expanded="True" />
+                <Node name="M1Frontend" expanded="True">
+                  <Node name="M1Layout.razor" selected="True" />
+                </Node>
+              </Node>
+              <Node name="appsettings.json" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/neab/Projects/Taraweb.V1/Controllers/UploadController.cs" relfile="Controllers/UploadController.cs" line="59" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Taraweb PreferredExecutionTarget="/Applications/Google Chrome.app" />
+</Properties>

@@ -1,0 +1,142 @@
+@page "/cms/posts"
+@layout Taraweb.Shared.cms.MainLayout
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+@inject DialogService DialogService
+@inject ContextMenuService ContextMenuService
+@inject TooltipService TooltipService
+@inject NotificationService NotificationService
+
+@inject TarawebM1Service TarawebM1Service
+
+<PageTitle>Posts</PageTitle>
+<RadzenContent Container="main">
+    <RadzenHeading Size="H1" Text="Posts" />
+    <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@AddButtonClick" />
+    <RadzenSplitButton Icon="get_app" style="margin-left: 10px; margin-bottom: 10px" Text="Export" Click="@ExportClick">
+        <RadzenSplitButtonItem Text="Excel" Value="xlsx" />
+        <RadzenSplitButtonItem Text="CSV" Value="csv" />
+    </RadzenSplitButton>
+    <RadzenTextBox Placeholder="Search ..." style="display: block; margin-bottom: 10px; width: 100%" @oninput="@Search" />
+    <div class="row">
+        <div class="col-md-12">
+            <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Responsive="true"
+                            Data="@posts" TItem="Taraweb.Models.TarawebM1.Post" RowSelect="@EditRow">
+                <Columns>
+                  
+                    <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Property="PageCategory.CategoryCode" Title="PageCategory">
+                    </RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Property="" Title="Gallery">
+                        <Template Context="data">
+                            <RadzenImage Path="@data.Gallery.Url" Style="height:100px" />
+                        </Template>
+                    </RadzenDataGridColumn>
+                  
+                    <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Property="IsActive" Title="IsActive">
+                    </RadzenDataGridColumn>
+
+                    <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Property="DateStart" Title="DateStart">
+                    </RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Property="DateFinish" Title="DateFinish">
+                    </RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Property="DateCreate" Title="DateCreate">
+                    </RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Property="UserCreateId" Title="UserCreateId">
+                    </RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Property="DateUpdate" Title="DateUpdate">
+                    </RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Property="UserUpdateId" Title="UserUpdateId">
+                    </RadzenDataGridColumn>
+
+                    <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+                        <Template Context="post">
+                            <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small"
+                                          Click=@(args => GridDeleteButtonClick(args, post)) @onclick:stopPropagation="true" />
+                        </Template>
+                    </RadzenDataGridColumn>
+                </Columns>
+            </RadzenDataGrid>
+        </div>
+    </div>
+</RadzenContent>
+@code {
+
+    protected IEnumerable<Taraweb.Models.TarawebM1.Post> posts;
+
+    protected RadzenDataGrid<Taraweb.Models.TarawebM1.Post> grid0;
+
+    protected string search = "";
+
+    protected async Task Search(ChangeEventArgs args)
+    {
+        search = $"{args.Value}";
+
+        await grid0.GoToPage(0);
+
+        posts = await TarawebM1Service.GetPosts(new Query { Filter = $@"i => i.Content.Contains(@0)", FilterParameters = new object[] { search }, Expand = "Gallery,Language,PageCategory" });
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        posts = await TarawebM1Service.GetPosts(new Query { Expand = "Gallery,PageCategory" });
+    }
+
+    protected async Task AddButtonClick(MouseEventArgs args)
+    {
+        NavigationManager.NavigateTo("cms/postform");
+    }
+
+    protected async Task EditRow(Taraweb.Models.TarawebM1.Post args)
+    {
+        NavigationManager.NavigateTo($"cms/postform/{args.Id}");
+    }
+
+    protected async Task GridDeleteButtonClick(MouseEventArgs args, Taraweb.Models.TarawebM1.Post post)
+    {
+        try
+        {
+            if (await DialogService.Confirm("Are you sure you want to delete this record?") == true)
+            {
+                var deleteResult = await TarawebM1Service.DeletePost(post.Id);
+
+                if (deleteResult != null)
+                {
+                    await grid0.Reload();
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            NotificationService.Notify(new NotificationMessage
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = $"Error",
+                Detail = $"Unable to delete Post"
+            });
+        }
+    }
+
+    protected async Task ExportClick(RadzenSplitButtonItem args)
+    {
+        if (args?.Value == "csv")
+        {
+            await TarawebM1Service.ExportPostsToCSV(new Query
+            {
+                Filter = $@"{(string.IsNullOrEmpty(grid0.Query.Filter) ? "true" : grid0.Query.Filter)}",
+                OrderBy = $"{grid0.Query.OrderBy}",
+                Expand = "Gallery,Language,PageCategory",
+                Select = string.Join(",", grid0.ColumnsCollection.Where(c => c.GetVisible()).Select(c => c.Property))
+            }, "Posts");
+        }
+
+        if (args == null || args.Value == "xlsx")
+        {
+            await TarawebM1Service.ExportPostsToExcel(new Query
+            {
+                Filter = $@"{(string.IsNullOrEmpty(grid0.Query.Filter) ? "true" : grid0.Query.Filter)}",
+                OrderBy = $"{grid0.Query.OrderBy}",
+                Expand = "Gallery,Language,PageCategory",
+                Select = string.Join(",", grid0.ColumnsCollection.Where(c => c.GetVisible()).Select(c => c.Property))
+            }, "Posts");
+        }
+    }
+}

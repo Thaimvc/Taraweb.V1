@@ -1,0 +1,18 @@
+﻿@page "/web/{lang}/contact-us"
+@layout Taraweb.Shared.M1Frontend.M1Layout
+<h3>Contact us</h3>
+
+@code {
+    [Parameter]
+    public string lang { get; set; }
+    [CascadingParameter]
+    Taraweb.Shared.M1Frontend.M1Layout layout { get; set; }
+
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        layout.LanguageBar = lang;
+
+    }
+}

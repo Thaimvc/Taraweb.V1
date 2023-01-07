@@ -1,0 +1,29 @@
+@page "/cms/upload-gallery"
+@layout Taraweb.Shared.cms.MainLayout
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+@inject DialogService DialogService
+@inject ContextMenuService ContextMenuService
+@inject TooltipService TooltipService
+@inject NotificationService NotificationService
+
+<PageTitle>UploadGallery</PageTitle>
+<RadzenContent Container="main">
+    <RadzenHeading Size="H1" Text="UploadGallery" />
+
+    <RadzenUpload Url="upload/single" Progress="@((args) => OnProgress(args, "Multiple files upload"))" Complete="closedialog" Accept="image/*"></RadzenUpload>
+</RadzenContent>
+@code {
+    int progress;
+    string info;
+
+    void OnProgress(UploadProgressArgs args, string name)
+    {
+        this.info = $"% '{name}' / {args.Loaded} of {args.Total} bytes.";
+        this.progress = args.Progress;
+    }
+    void closedialog()
+    {
+        DialogService.Close();
+    }
+}

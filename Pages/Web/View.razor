@@ -1,0 +1,34 @@
+﻿@page "/web/{lang}/view/{slug}"
+@layout Taraweb.Shared.M1Frontend.M1Layout
+
+    <div class="row mt-5">
+        <div class="col-xl-12">
+            <h4>@postcontent.Title</h4>
+        </div>
+        <div class="col-xl-12 text-end ">
+            @postcontent.Post.DateCreate.ToString("dd/MM/yyyy HH:mm")
+        </div>
+        <div class="col-xl-12 pt-3" style="border-top:1px #ddd solid">
+            @((MarkupString)@postcontent.Content)
+        </div>
+    </div>
+
+
+
+@code {
+    [Parameter]
+    public string lang { get; set; }
+
+    [Parameter]
+    public string slug { get; set; }
+
+    [Inject]
+    TarawebM1Service sv { get; set; }
+
+    public Taraweb.Models.TarawebM1.PostContent postcontent { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        postcontent = await sv.GetPostContentBySlug(slug,lang);
+    }
+}
+

@@ -1,0 +1,33 @@
+﻿@page "/web/{lang}/view-news-events/{id:int}"
+@layout Taraweb.Shared.M1Frontend.M1Layout
+@inject TarawebM1Service sv
+<h3>News & Events</h3>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <img class="card-img-top" src="@post.Gallery.Url" alt="Card image">
+            <div class=""></div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string lang { get; set; }
+    [Parameter]
+    public int id { get; set; }
+
+    Models.TarawebM1.Post post { get; set; }
+    [CascadingParameter]
+    Taraweb.Shared.M1Frontend.M1Layout layout { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        layout.LanguageBar = lang;
+
+        post = await sv.GetPostById(id);
+
+    }
+    
+}

@@ -1,0 +1,188 @@
+@page "/cms/add-post"
+@page "/cms/add-post/{id:int}"
+@layout Taraweb.Shared.cms.MainLayout
+@using Models.TarawebM1;
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+@inject DialogService DialogService
+@inject ContextMenuService ContextMenuService
+@inject TooltipService TooltipService
+@inject NotificationService NotificationService
+
+@inject TarawebM1Service TarawebM1Service
+
+<PageTitle>Add Post</PageTitle>
+<RadzenContent Container="main">
+    <div class="col-md-12">
+        <RadzenTemplateForm TItem="Taraweb.Models.TarawebM1.Post" Data="@post" Visible="@(post != null)" Submit="@FormSubmit">
+
+            <div style="margin-bottom: 1rem" class="row">
+                <div class="col-md-3">
+                    <RadzenLabel Text="Language" Component="Language" style="width: 100%" />
+                </div>
+                <div class="col-md-9">
+                    @*<RadzenDropDown Data="@languagesForLanguageId" TextProperty="Code" ValueProperty="Id"
+                                    Placeholder="Choose Language" style="display: block; width: 100%" @bind-Value="@post.LanguageId" Name="LanguageId" />*@
+                    <RadzenRequiredValidator Component="LanguageId" DefaultValue="0" Text="Language is required" style="position: absolute" />
+
+                </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+                <div class="col-md-3">
+                    <RadzenLabel Text="PageCategory" Component="PageCategory" style="width: 100%" />
+                </div>
+                <div class="col-md-9">
+                    <RadzenDropDown Data="@pageCategoriesForPageCategoryId" TextProperty="CategoryCode" ValueProperty="Id"
+                                    Placeholder="Choose PageCategory" style="display: block; width: 100%" @bind-Value="@post.PageCategoryId" Name="PageCategoryId" />
+                </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+                <div class="col-md-3">
+                    <RadzenLabel Text="Title" Component="Title" style="width: 100%" />
+                </div>
+                <div class="col-md-9">
+                    @*<RadzenTextBox style="display: block; width: 100%" @bind-Value="@post.Title" Name="Title" />*@
+
+                </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+                <div class="col-md-3">
+                    <RadzenLabel Text="Banner" Component="Gallery" style="width: 100%" />
+                </div>
+                <div class="col-md-9">
+                    <RadzenImage Path="@bannerpath" Visible="@showbanner" Style="height:100px"></RadzenImage>
+                    <RadzenUpload Url="upload/single" Accept="image/*" Complete="OnComplete"></RadzenUpload>
+                </div>
+            </div>
+
+
+            <RadzenTabs>
+                <Tabs>
+                    @foreach (var lang in languages)
+                    {
+                        <RadzenTabsItem Text="@lang.Code">
+                            <div style="margin-bottom: 1rem" class="row">
+                                <div class="col-md-3">
+                                    <RadzenLabel Text="Content" Component="PostContent.Content" style="width: 100%" />
+                                </div>
+                                <div class="col-md-9">
+                                    @*<RadzenHtmlEditor Name="Content" @bind-Value="@post.Content" Style="height: 500px" UploadUrl="upload/image"></RadzenHtmlEditor>*@
+                                    <RadzenRequiredValidator Component="Content" Text="Content is required" style="position: absolute" />
+                                </div>
+                            </div>
+                        </RadzenTabsItem>
+                    }
+
+                   
+                </Tabs>
+            </RadzenTabs>
+            
+            <div style="margin-bottom: 1rem" class="row">
+                <div class="col-md-3">
+                    <RadzenLabel Text="IsActive" Component="IsActive" style="width: 100%" />
+                </div>
+                <div class="col-md-9">
+                    <RadzenCheckBox @bind-Value="@post.IsActive" Name="IsActive" />
+                </div>
+            </div>
+
+            <div style="margin-bottom: 1rem" class="row">
+                <div class="col-md-3">
+                    <RadzenLabel Text="DateStart" Component="DateStart" style="width: 100%" />
+                </div>
+                <div class="col-md-9">
+                    <RadzenDatePicker DateFormat="dd/MM/yyyy" style="display: block; width: 100%" @bind-Value="@post.DateStart" Name="DateStart" />
+                    <RadzenRequiredValidator Component="DateStart" Text="DateStart is required" style="position: absolute" />
+                </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+                <div class="col-md-3">
+                    <RadzenLabel Text="DateFinish" Component="DateFinish" style="width: 100%" />
+                </div>
+                <div class="col-md-9">
+                    <RadzenDatePicker DateFormat="dd/MM/yyyy" style="display: block; width: 100%" @bind-Value="@post.DateFinish" Name="DateFinish" />
+                    <RadzenRequiredValidator Component="DateFinish" Text="DateFinish is required" style="position: absolute" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col offset-sm-3">
+                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" ButtonStyle="ButtonStyle.Primary" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" style="margin-left: 1rem" Text="Cancel" Click="@CancelButtonClick" />
+                </div>
+            </div>
+        </RadzenTemplateForm>
+    </div>
+</RadzenContent>
+@code {
+
+    [Parameter]
+    public int? Id { get; set; }
+    public IEnumerable<Language> languages { get; set; }
+    public bool showbanner { get; set; } = false;
+    public string bannerpath { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        languages = await TarawebM1Service.GetLanguages();
+        if (Id == null)
+        {
+            post = new Taraweb.Models.TarawebM1.Post();
+            post.DateStart = DateTime.Today;
+            post.DateFinish = DateTime.Today;
+        }
+        else
+        {
+            post = await TarawebM1Service.GetPostById(Id.Value);
+            if (post.Gallery != null)
+            {
+                bannerpath = post.Gallery.Url;
+                showbanner = true;
+            }
+        }
+
+
+        galleriesForGalleryId = await TarawebM1Service.GetGalleries();
+
+        languagesForLanguageId = await TarawebM1Service.GetLanguages();
+
+        pageCategoriesForPageCategoryId = await TarawebM1Service.GetPageCategories();
+    }
+    protected Taraweb.Models.TarawebM1.Post post;
+
+    protected IEnumerable<Taraweb.Models.TarawebM1.Gallery> galleriesForGalleryId;
+
+    protected IEnumerable<Taraweb.Models.TarawebM1.Language> languagesForLanguageId;
+
+    protected IEnumerable<Taraweb.Models.TarawebM1.PageCategory> pageCategoriesForPageCategoryId;
+
+    protected async Task FormSubmit()
+    {
+        try
+        {
+            await TarawebM1Service.CreatePost(post);
+            NavigationManager.NavigateTo("/cms/posts");
+        }
+        catch (Exception ex)
+        {
+            NotificationService.Notify(new NotificationMessage
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = $"Error",
+                Detail = $"Unable to update Post"
+            });
+        }
+    }
+
+    protected async Task CancelButtonClick(MouseEventArgs args)
+    {
+        NavigationManager.NavigateTo("/cms/posts");
+    }
+
+    void OnComplete(UploadCompleteEventArgs args)
+    {
+        var obj = Newtonsoft.Json.JsonConvert.DeserializeObject<UploadResponseModel>(args.RawResponse);
+        bannerpath = obj.Url;
+        post.GalleryId = obj.id;
+        showbanner = true;
+        Console.WriteLine($"Server response: {args.RawResponse}");
+    }
+}

@@ -1,0 +1,47 @@
+@inherits LayoutComponentBase
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+@inject DialogService DialogService
+@inject ContextMenuService ContextMenuService
+@inject TooltipService TooltipService
+@inject NotificationService NotificationService
+
+<RadzenDialog />
+<RadzenNotification />
+<RadzenTooltip />
+<RadzenContextMenu />
+
+<RadzenLayout>
+    <RadzenHeader>
+        <div class="row justify-content-start align-items-center">
+            <div class="col-6 d-flex align-items-center">
+                <RadzenSidebarToggle Click="@SidebarToggleClick"></RadzenSidebarToggle>
+                <RadzenLabel Text="Taraweb"></RadzenLabel>
+            </div>
+            <div class="col-6 d-flex align-items-center justify-content-end"></div>
+        </div>
+    </RadzenHeader>
+    <RadzenBody Expanded="@sidebarExpanded">
+        <RadzenContentContainer Name="main">
+        @Body
+        </RadzenContentContainer>
+    </RadzenBody>
+    <RadzenSidebar Expanded="@sidebarExpanded">
+        <RadzenPanelMenu style="height: 100%">
+            <RadzenPanelMenuItem Text="Home" Path="/" />
+        </RadzenPanelMenu>
+    </RadzenSidebar>
+    <RadzenFooter>
+        <RadzenLabel Text="Taraweb, Copyright Ⓒ 2022">
+        </RadzenLabel>
+    </RadzenFooter>
+</RadzenLayout>
+
+@code {
+   bool sidebarExpanded = true;
+
+   void SidebarToggleClick()
+   {
+       sidebarExpanded = !sidebarExpanded;
+   }
+}

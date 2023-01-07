@@ -1,0 +1,123 @@
+@page "/cms/galleries"
+@layout Taraweb.Shared.cms.MainLayout
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+@inject DialogService DialogService
+@inject ContextMenuService ContextMenuService
+@inject TooltipService TooltipService
+@inject NotificationService NotificationService
+
+@inject TarawebM1Service TarawebM1Service
+
+<PageTitle>Galleries</PageTitle>
+<RadzenContent Container="main">
+    <RadzenHeading Size="H1" Text="Galleries" />
+    <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@AddButtonClick" />
+    <RadzenSplitButton Icon="get_app" style="margin-left: 10px; margin-bottom: 10px" Text="Export" Click="@ExportClick">
+        <RadzenSplitButtonItem Text="Excel" Value="xlsx" />
+        <RadzenSplitButtonItem Text="CSV" Value="csv" />
+    </RadzenSplitButton>
+    <RadzenTextBox Placeholder="Search ..." style="display: block; margin-bottom: 10px; width: 100%" @oninput="@Search" />
+
+    <div class="row">
+
+
+        @foreach (var g in galleries)
+        {
+            <div class="col-lg-3 col-xl-3 ">
+                <div style="width:100%;height:280px; background-image:url(@g.Url); background-position:center; background-repeat:no-repeat;background-size:cover"></div>
+
+                <RadzenCard Style="padding:5px;">
+                    <div class="text-right">
+                        <RadzenButton Variant="Variant.Text" Text="x" Class="rz-text-danger-color" />
+                    </div>
+                </RadzenCard>
+
+            </div>
+        }
+
+
+    </div>
+
+</RadzenContent>
+@code {
+
+    protected IEnumerable<Taraweb.Models.TarawebM1.Gallery> galleries;
+
+    protected RadzenDataGrid<Taraweb.Models.TarawebM1.Gallery> grid0;
+
+    protected string search = "";
+
+    protected async Task Search(ChangeEventArgs args)
+    {
+        search = $"{args.Value}";
+
+        await grid0.GoToPage(0);
+
+        galleries = await TarawebM1Service.GetGalleries(new Query { Filter = $@"i => i.FileName.Contains(@0) || i.Url.Contains(@0) || i.FileExtension.Contains(@0) || i.FileType.Contains(@0)", FilterParameters = new object[] { search } });
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        galleries = await TarawebM1Service.GetGalleries(new Query { Filter = $@"i => i.FileName.Contains(@0) || i.Url.Contains(@0) || i.FileExtension.Contains(@0) || i.FileType.Contains(@0)", FilterParameters = new object[] { search } });
+    }
+
+    protected async Task AddButtonClick(MouseEventArgs args)
+    {
+        NavigationManager.NavigateTo("cms/add-gallery");
+    }
+
+    protected async Task EditRow(Taraweb.Models.TarawebM1.Gallery args)
+    {
+        NavigationManager.NavigateTo($"edit-gallery/{args.Id}");
+    }
+
+    protected async Task GridDeleteButtonClick(MouseEventArgs args, Taraweb.Models.TarawebM1.Gallery gallery)
+    {
+        try
+        {
+            if (await DialogService.Confirm("Are you sure you want to delete this record?") == true)
+            {
+                var deleteResult = await TarawebM1Service.DeleteGallery(gallery.Id);
+
+                if (deleteResult != null)
+                {
+                    await grid0.Reload();
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            NotificationService.Notify(new NotificationMessage
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = $"Error",
+                Detail = $"Unable to delete Gallery"
+            });
+        }
+    }
+
+    protected async Task ExportClick(RadzenSplitButtonItem args)
+    {
+        if (args?.Value == "csv")
+        {
+            await TarawebM1Service.ExportGalleriesToCSV(new Query
+            {
+                Filter = $@"{(string.IsNullOrEmpty(grid0.Query.Filter) ? "true" : grid0.Query.Filter)}",
+                OrderBy = $"{grid0.Query.OrderBy}",
+                Expand = "",
+                Select = string.Join(",", grid0.ColumnsCollection.Where(c => c.GetVisible()).Select(c => c.Property))
+            }, "Galleries");
+        }
+
+        if (args == null || args.Value == "xlsx")
+        {
+            await TarawebM1Service.ExportGalleriesToExcel(new Query
+            {
+                Filter = $@"{(string.IsNullOrEmpty(grid0.Query.Filter) ? "true" : grid0.Query.Filter)}",
+                OrderBy = $"{grid0.Query.OrderBy}",
+                Expand = "",
+                Select = string.Join(",", grid0.ColumnsCollection.Where(c => c.GetVisible()).Select(c => c.Property))
+            }, "Galleries");
+        }
+    }
+}

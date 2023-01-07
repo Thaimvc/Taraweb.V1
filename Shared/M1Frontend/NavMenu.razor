@@ -1,0 +1,75 @@
+﻿@inject NavigationManager NavigationManager
+@using Taraweb.Models.TarawebM1;
+@inject IHttpContextAccessor hc;
+@inject ILocalStorageService localStorage
+@inject TarawebM1Service sv;
+
+<nav class="navbar navbar-dark navbar-expand bg-dark nav-top py-0">
+    <div class="container">
+
+        <ul class="navbar-nav ms-auto navbar-top">
+            @*<li class="nav-item"><a class="nav-link active d-inline" href="#" style="font-size: 0.6rem;"> @Lang</a></li>*@
+            <li class="nav-item"><a class="nav-link active d-inline" href="#" style="font-size: 0.6rem;">Register</a></li>
+            <li class="nav-item"><a class="nav-link d-inline" href="#" style="font-size:0.6rem">Login</a></li>
+            <li class="nav-item"></li>
+        </ul>
+     
+        <select class="form-select-sm" style="font-size: 0.5rem;" onchange="@langchange">
+            @foreach (var l in Languages)
+                {
+                    
+                    if (Lang == l.Code)
+                    {
+                       <option value="@l.Code" selected>@l.Code.ToUpper()</option>
+    }
+    else
+    {
+        <option value="@l.Code" >@l.Code.ToUpper()</option>
+    }
+
+                
+            }
+
+          
+        </select>
+    </div>
+</nav>
+<nav class="navbar navbar-dark navbar-expand-md bg-dark py-0">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#" style="padding-top: 0;"><img src="M1/assets/img/logo.png"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navcol-1" style="font-size: 14px;">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="/web/@Lang">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/web/@Lang/about-us">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="/@Lang/directory">Directory</a></li>
+                <li class="nav-item"><a class="nav-link" href="/web/@Lang/news-events">News & Events</a></li>
+                <li class="nav-item"><a class="nav-link" href="/web/@Lang/seminars">Seminar</a></li>
+                <li class="nav-item"><a class="nav-link" href="/web/@Lang/how-to-join">How to Join</a></li>
+                <li class="nav-item"><a class="nav-link" href="/web/@Lang/contact-us">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+@code{
+    [Parameter]
+    public string Lang { get; set; }
+
+    public IEnumerable<Language> Languages { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Languages = await sv.GetLanguages();
+        }
+
+    async Task langchange(ChangeEventArgs e)
+    {
+        var a = NavigationManager.Uri;
+        string[] spliturl = a.Split("/");
+        Console.WriteLine(e.Value.ToString());
+        Lang = e.Value.ToString();
+        await localStorage.SetItemAsync<string>("lang", Lang);
+        NavigationManager.NavigateTo("/web/"+ e.Value.ToString() + "/" + (spliturl.Length>5 ? spliturl[5]:""),true);
+        StateHasChanged();
+    }
+}

@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <NoWarn>CS0168,CS1998,BL9993,CS0649,CS0436,0436</NoWarn>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Radzen.Blazor" Version="*" />
+    <PackageReference Include="DocumentFormat.OpenXml" Version="2.16.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Blazored.LocalStorage" Version="4.3.0" />
+    <PackageReference Include="Blazored.SessionStorage" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.HeaderPropagation" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.OData" Version="8.0.12" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Shared\M1Frontend\" />
+    <None Remove="Pages\Qlist\" />
+    <None Remove="Pages\CMS\" />
+    <None Remove="Pages\Web\" />
+    <None Remove="Newtonsoft.Json" />
+    <None Remove="Blazored.LocalStorage" />
+    <None Remove="Blazored.SessionStorage" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Shared\M1Frontend\" />
+    <Folder Include="Pages\Qlist\" />
+    <Folder Include="Pages\CMS\" />
+    <Folder Include="wwwroot\M1\" />
+    <Folder Include="Pages\Web\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\M1\" />
+  </ItemGroup>
+</Project>

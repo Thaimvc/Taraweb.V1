@@ -1,0 +1,73 @@
+@page "/cms/add-language"
+@layout Taraweb.Shared.cms.MainLayout
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+@inject DialogService DialogService
+@inject ContextMenuService ContextMenuService
+@inject TooltipService TooltipService
+@inject NotificationService NotificationService
+
+@inject TarawebM1Service TarawebM1Service
+
+<PageTitle>Add Language</PageTitle>
+<RadzenContent Container="main">
+    <div class="col-md-12">
+        <RadzenTemplateForm TItem="Taraweb.Models.TarawebM1.Language" Data="@language" Visible="@(language != null)" Submit="@FormSubmit">
+            <div style="margin-bottom: 1rem" class="row">
+                <div class="col-md-3">
+                    <RadzenLabel Text="Code" Component="Code" style="width: 100%" />
+                </div>
+                <div class="col-md-9">
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@language.Code" Name="Code" />
+                    <RadzenRequiredValidator Component="Code" Text="Code is required" style="position: absolute" />
+                </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+                <div class="col-md-3">
+                    <RadzenLabel Text="IsActive" Component="IsActive" style="width: 100%" />
+                </div>
+                <div class="col-md-9">
+                    <RadzenCheckBox @bind-Value="@language.IsActive" Name="IsActive" />
+                    <RadzenRequiredValidator Component="IsActive" Text="IsActive is required" style="position: absolute" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col offset-sm-3">
+                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" ButtonStyle="ButtonStyle.Primary" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" style="margin-left: 1rem" Text="Cancel" Click="@CancelButtonClick" />
+                </div>
+            </div>
+        </RadzenTemplateForm>
+    </div>
+</RadzenContent>
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {
+        language = new Taraweb.Models.TarawebM1.Language();
+    }
+    protected Taraweb.Models.TarawebM1.Language language;
+
+    protected async Task FormSubmit()
+    {
+        try
+        {
+            await TarawebM1Service.CreateLanguage(language);
+            NavigationManager.NavigateTo("languages");
+        }
+        catch (Exception ex)
+        {
+            NotificationService.Notify(new NotificationMessage
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = $"Error",
+                Detail = $"Unable to update Language"
+            });
+        }
+    }
+
+    protected async Task CancelButtonClick(MouseEventArgs args)
+    {
+        NavigationManager.NavigateTo("languages");
+    }
+}

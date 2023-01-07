@@ -1,0 +1,23 @@
+﻿@page "/web/{lang}/seminars"
+@layout Taraweb.Shared.M1Frontend.M1Layout
+@inject TarawebM1Service sv
+    <h3>Seminars</h3>
+<div class="row">
+    <div class="col-lg-12">
+        <NewsEventsComponent size="size" catid="2" lang="@lang"></NewsEventsComponent>
+
+    </div>
+</div>
+
+
+@code {
+    [Parameter]
+    public string lang { get; set; }
+    [Parameter]
+    public int? page { get; set; }
+
+    public int size { get; set; } = 1000;
+    [CascadingParameter]
+    Taraweb.Shared.M1Frontend.M1Layout layout { get; set; }
+   
+}

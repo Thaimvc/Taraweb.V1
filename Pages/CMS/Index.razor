@@ -1,0 +1,17 @@
+@page "/cms/"
+@layout Taraweb.Shared.cms.MainLayout
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+@inject DialogService DialogService
+@inject ContextMenuService ContextMenuService
+@inject TooltipService TooltipService
+@inject NotificationService NotificationService
+@attribute [Authorize]
+<PageTitle>Index</PageTitle>
+<RadzenContent Container="main">
+    <RadzenHeading Size="H1" Text="ThaiTara.org" />
+    <p>Backend for Thaitara website.</p>
+</RadzenContent>
+
+@code {
+}

@@ -1,0 +1,110 @@
+@page "/cms/add-page-category/"
+@page "/cms/add-page-category/{Id:int}"
+@layout Taraweb.Shared.cms.MainLayout
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+@inject DialogService DialogService
+@inject ContextMenuService ContextMenuService
+@inject TooltipService TooltipService
+@inject NotificationService NotificationService
+
+@inject TarawebM1Service TarawebM1Service
+
+<PageTitle>Add PageCategory</PageTitle>
+<RadzenContent Container="main">
+    <div class="col-md-12">
+        <RadzenTemplateForm TItem="Taraweb.Models.TarawebM1.PageCategory" Data="@pageCategory" Visible="@(pageCategory != null)" Submit="@FormSubmit">
+            <div style="margin-bottom: 1rem" class="row">
+                <div class="col-md-3">
+                    <RadzenLabel Text="CategoryCode" Component="CategoryCode" style="width: 100%" />
+                </div>
+                <div class="col-md-9">
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@pageCategory.CategoryCode" Name="CategoryCode" />
+                    <RadzenRequiredValidator Component="CategoryCode" Text="CategoryCode is required" style="position: absolute" />
+                </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+                <div class="col-md-3">
+                    <RadzenLabel Text="CategoryName" Component="CategoryName" style="width: 100%" />
+                </div>
+                <div class="col-md-9">
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@pageCategory.CategoryName" Name="CategoryName" />
+                    <RadzenRequiredValidator Component="CategoryName" Text="CategoryName is required" style="position: absolute" />
+                </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+                <div class="col-md-3">
+                    <RadzenLabel Text="Language" Component="Language" style="width: 100%" />
+                </div>
+                <div class="col-md-9">
+                    <RadzenDropDown Data="@languagesForLanguageId" TextProperty="Code" ValueProperty="Id"
+                                    Placeholder="Choose Language" style="display: block; width: 100%" @bind-Value="@pageCategory.LanguageId" Name="LanguageId" />
+                </div>
+            </div>
+
+          
+            <div style="margin-bottom: 1rem" class="row">
+                <div class="col-md-3">
+                    <RadzenLabel Text="IsActive" Component="IsActive" style="width: 100%" />
+                </div>
+                <div class="col-md-9">
+                    <RadzenCheckBox @bind-Value="@pageCategory.IsActive" Name="IsActive" />
+                    <RadzenRequiredValidator Component="IsActive" Text="IsActive is required" style="position: absolute" />
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col offset-sm-3">
+                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" ButtonStyle="ButtonStyle.Primary" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" style="margin-left: 1rem" Text="Cancel" Click="@CancelButtonClick" />
+                </div>
+            </div>
+        </RadzenTemplateForm>
+    </div>
+</RadzenContent>
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        if (Id != null)
+        {
+            pageCategory = await TarawebM1Service.GetPageCategoryById(Id.Value);
+
+        }
+        else
+        {
+            pageCategory = new Taraweb.Models.TarawebM1.PageCategory();
+        }
+
+
+        languagesForLanguageId = await TarawebM1Service.GetLanguages();
+    }
+    protected Taraweb.Models.TarawebM1.PageCategory pageCategory;
+
+    protected IEnumerable<Taraweb.Models.TarawebM1.Language> languagesForLanguageId;
+
+    protected async Task FormSubmit()
+    {
+        try
+        {
+            await TarawebM1Service.CreatePageCategory(pageCategory);
+            NavigationManager.NavigateTo("page-categories");
+        }
+        catch (Exception ex)
+        {
+            NotificationService.Notify(new NotificationMessage
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = $"Error",
+                Detail = $"Unable to update PageCategory"
+            });
+        }
+    }
+
+    protected async Task CancelButtonClick(MouseEventArgs args)
+    {
+        NavigationManager.NavigateTo("page-categories");
+    }
+}

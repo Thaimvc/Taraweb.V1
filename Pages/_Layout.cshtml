@@ -1,0 +1,91 @@
+@using Microsoft.AspNetCore.Components.Web
+@namespace Taraweb.Pages
+@inject IHttpContextAccessor hc
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="~/" />
+    @{
+        string maincss = "";
+        string stylecss = "";
+        string sitecss = "";
+        string[] segments = hc.HttpContext.Request.Path.Value.Split("/");
+        if (segments[1] == "")
+        {
+            hc.HttpContext.Response.Redirect("/web/th/");
+        }
+        switch (segments[1])
+        {
+            case "web":
+                maincss = "M1/assets/bootstrap/css/bootstrap.min.css";
+                stylecss = "M1/assets/css/styles.min.css";
+                sitecss = "M1/css/site.css";
+                break;
+            case "qlist":
+                maincss = "_content/Radzen.Blazor/css/standard.css";
+
+                sitecss = "css/site.css";
+                break;
+            case "cms":
+                maincss = "_content/Radzen.Blazor/css/standard.css";
+
+                sitecss = "cms/css/site.css";
+                break;
+            default:
+                maincss = "M1/assets/bootstrap/css/bootstrap.min.css";
+                stylecss = "M1/assets/css/styles.min.css";
+                sitecss = "M1/css/site.css";
+                break;
+        };
+
+
+
+
+    }
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="@maincss" id="site-css">
+    @*<link href="_content/Radzen.Blazor/css/standard.css" rel="stylesheet" id="main-css" />*@
+    <link rel="stylesheet" href="M1/assets/fonts/ionicons.min.css" id="my-css">
+    <link rel="stylesheet" href="@stylecss" id="style-css">
+
+    <link rel="stylesheet" href="@sitecss" id="site-css">
+
+    <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
+
+</head>
+<body class="d-flex flex-column h-100">
+    <div>
+
+    </div>
+    @RenderBody()
+
+    <div id="blazor-error-ui">
+        <environment include="Staging,Production">
+            An error has occurred. This application may no longer respond until reloaded.
+        </environment>
+        <environment include="Development">
+            An unhandled exception has occurred. See browser dev tools for details.
+        </environment>
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <script src="_framework/blazor.server.js"></script>
+    <script src="_content/Radzen.Blazor/Radzen.Blazor.js"></script>
+    <script>function loadCss(elementid, cssPath) {
+
+            CssFile = document.getElementById(elementid)
+            CssFile.href = cssPath
+
+            //CssFile.parentNode.insertBefore(Link, CssFile);
+            // document.getElementsByTagName("head")[0].appendChild(link);
+        }</script>
+</body>
+</html>
