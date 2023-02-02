@@ -11,6 +11,7 @@
 @inject TarawebM1Service TarawebM1Service
 
 <PageTitle>Add PageCategory</PageTitle>
+<h3>Form PageCategory</h3>
 <RadzenContent Container="main">
     <div class="col-md-12">
         <RadzenTemplateForm TItem="Taraweb.Models.TarawebM1.PageCategory" Data="@pageCategory" Visible="@(pageCategory != null)" Submit="@FormSubmit">
@@ -32,7 +33,7 @@
                     <RadzenRequiredValidator Component="CategoryName" Text="CategoryName is required" style="position: absolute" />
                 </div>
             </div>
-            <div style="margin-bottom: 1rem" class="row">
+            @*<div style="margin-bottom: 1rem" class="row">
                 <div class="col-md-3">
                     <RadzenLabel Text="Language" Component="Language" style="width: 100%" />
                 </div>
@@ -40,7 +41,7 @@
                     <RadzenDropDown Data="@languagesForLanguageId" TextProperty="Code" ValueProperty="Id"
                                     Placeholder="Choose Language" style="display: block; width: 100%" @bind-Value="@pageCategory.LanguageId" Name="LanguageId" />
                 </div>
-            </div>
+            </div>*@
 
           
             <div style="margin-bottom: 1rem" class="row">
@@ -89,8 +90,16 @@
     {
         try
         {
-            await TarawebM1Service.CreatePageCategory(pageCategory);
-            NavigationManager.NavigateTo("page-categories");
+            if(pageCategory.Id != 0)
+            {
+                await TarawebM1Service.UpdatePageCategory(pageCategory.Id, pageCategory);
+            }
+            else
+            {
+                await TarawebM1Service.CreatePageCategory(pageCategory);
+            }
+
+            NavigationManager.NavigateTo("cms/page-categories");
         }
         catch (Exception ex)
         {
@@ -105,6 +114,6 @@
 
     protected async Task CancelButtonClick(MouseEventArgs args)
     {
-        NavigationManager.NavigateTo("page-categories");
+        NavigationManager.NavigateTo("cms/page-categories");
     }
 }

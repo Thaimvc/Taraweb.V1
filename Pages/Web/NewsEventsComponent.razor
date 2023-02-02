@@ -2,57 +2,163 @@
 @inject ILocalStorageService localStorage
 @using Microsoft.JSInterop
 @inject IJSRuntime JSRuntime
-<RadzenTextBox Placeholder="Search ..." style="display: block; margin-bottom: 10px; width: 100%" @oninput="@Search" Visible="@showsearch"/>
-<div class="row">
-    @foreach (var news in newslist)
+<div class="container">
+    @if (showsearch)
     {
-        <div class="col-lg-3 col-xl-4">
-            <div class="card" style="border-radius: 0;">
-
-                <div class="card-body">
-                    <div style="width:100%;height:280px; background-image:url(@news.Post.Gallery.Url); background-position:center; background-repeat:no-repeat;background-size:cover"></div>
-
-                </div>
-                <div class="card-footer" style="height:90px">
-                    <a href="/web/@lang/view/@news.Slug">@news.Title</a>
-                    <div class="text-start"><i class="bi bi-clock"></i> <span style="font-size:0.7rem">@news.Post.DateCreate.ToString("dd MMM yyyy")</span></div>
-                </div>
+        <div class="row">
+            <div class="col-6">
+                <RadzenTextBox Placeholder="Search ..." style="display: block; margin-bottom: 10px; width: 100%" @oninput="@Search" />
+            </div>
+            <div class="col-sm-3">
+                <RadzenDatePicker TValue="DateTime?" @bind-Value="DateStart" DateFormat="d" Name="DateStart" Class="w-100" Change="@(arg=>datestartsearch(arg))" Placeholder="From Date" />
+            </div>
+            <div class="col-sm-3">
+                <RadzenDatePicker TValue="DateTime?" @bind-Value="DateFinish" DateFormat="d" Name="DateFinish" Class="w-100" Change="@(arg=>datefinishsearch(arg))" Placeholder="To Date" />
             </div>
         </div>
     }
 
+
+    <div class="row">
+        @foreach (var news in newslist)
+        {
+            if (recordcount % 2 == 1)
+            {
+                <div class="col-lg-3 col-xl-4 pb-3">
+                    <div class="card" style="border-radius: 0;">
+
+                        <div class="card-body" style="padding:0">
+                            <div style="width:100%;height:300px; background-image:url(@news.Post.Gallery.Url); background-position:center; background-repeat:no-repeat;background-size:cover">
+                                <a href="/web/@lang/view/@news.PostId/@news.Slug"><img src="img/spacer.png" style=" width:100%;height:300px;" /></a>
+                            </div>
+
+                        </div>
+                        <div class="card-footer" style="height:90px">
+                            <a href="/web/@lang/view/@news.PostId/@news.Slug" style="text-decoration:none"><b>@news.Title</b></a>
+                            <div class="text-start"><i class="bi bi-clock"></i> <span style="font-size:0.7rem">@news.Post.DateCreate.ToString("dd MMM yyyy")</span></div>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="col-lg-3 col-xl-4 pb-3">
+                    <div class="card" style="border-radius: 0;">
+
+                        <div class="card-body" style="padding:0">
+                            <div style="width:100%;height:300px; background-image:url(@news.Post.Gallery.Url); background-position:center; background-repeat:no-repeat;background-size:cover">
+                                <a href="/web/@lang/view/@news.PostId/@news.Slug"><img src="img/spacer.png" style=" width:100%;height:300px;" /></a>
+                            </div>
+
+                        </div>
+                        <div class="card-footer" style="height: 90px; background-color: #0492bf; color:#FFF">
+                            <a href="/web/@lang/view/@news.PostId/@news.Slug" style="text-decoration:none; color:#FFF"><b>@news.Title</b></a>
+                            <div class="text-start"><i class="bi bi-clock"></i> <span style="font-size:0.7rem">@news.Post.DateCreate.ToString("dd MMM yyyy")</span></div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            recordcount++;
+        }
+
+    </div>
+    <div class="text-center">
+        <RadzenButton Click="loadmore" Visible="showload" ButtonStyle="ButtonStyle.Info">Load more</RadzenButton>
+    </div>
 </div>
 
 @code {
     [Parameter]
     public int size { get; set; }
+
     [Parameter]
     public int catid { get; set; }
+
     [Parameter]
     public string lang { get; set; }
 
     [Parameter]
     public bool showsearch { get; set; } = true;
+
+    protected bool showload { get; set; } = false;
+
+    protected DateTime? DateStart { get; set; }
+    protected DateTime? DateFinish { get; set; }
+
     [Inject]
     TarawebM1Service sv { get; set; }
+
+    protected int recordcount = 1;
+
     protected string search = "";
     protected async Task Search(ChangeEventArgs args)
     {
         search = $"{args.Value}";
 
-
-        newslist = await sv.GetPostContentByCategoryId(1, lang, new Query { Expand = "Post,Language,Post.Gallery", Filter = $@"i => i.Content.Contains(@0) && i.Post.PageCategoryId=@1", FilterParameters = new object[] { search , catid}, Top = size, OrderBy = "Id desc" });
+        await SearchResult();
     }
+    protected async Task datestartsearch(DateTime? args)
+    {
+        DateStart = args;
 
+        await SearchResult();
+    }
+    protected async Task datefinishsearch(DateTime? args)
+    {
+        DateFinish = args;
+
+        await SearchResult();
+    }
+    protected async Task SearchResult()
+    {
+        recordcount = 1;
+        string strsearch = $@"i => i.Content.Contains(@0)";
+        var filparam = new object[3] { search,"","" };
+        int paramcount = 1;
+        if (DateStart != null)
+        {
+            strsearch += " && i.Post.DateStart >= @" + paramcount;
+            filparam[paramcount] = DateStart;
+            paramcount++;
+        }
+        if (DateFinish != null)
+        {
+            strsearch += " && i.Post.DateStart <= @"+paramcount;
+            filparam[paramcount] = DateFinish;
+            paramcount++;
+
+        }
+
+        newslist = await sv.GetPostContentByCategoryId(1, lang, new Query { Expand = "Post,Language,Post.Gallery", Filter =  strsearch, FilterParameters = filparam, Top = size, OrderBy = "Id desc" });
+    }
     protected IEnumerable<Models.TarawebM1.PostContent> newslist;
 
-
+    protected int loadsize = 9;
     protected override async Task OnInitializedAsync()
     {
 
+        if (!showsearch)
+        {
+            loadsize = 3;
+        }
+        await sv.resetloadsize(loadsize);
         newslist = await sv.GetPostContentByCategoryId(catid, lang, new Query { Expand = "Post,Language,Post.Gallery", Top = size, OrderBy = "Id desc" });
 
+        if(newslist.Count() < loadsize && showsearch)
+        {
+            showload = false;
+        }
+    }
 
+    protected async Task loadmore()
+    {
+        Console.WriteLine("load...");
+        newslist = await sv.GetPostContentByCategoryId(catid, lang, new Query { Expand = "Post,Language,Post.Gallery", Top = size, OrderBy = "Id desc" },1);
+        if (newslist.Count() < loadsize && showsearch)
+        {
+            showload = false;
+        }
     }
 
 }

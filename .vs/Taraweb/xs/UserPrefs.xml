@@ -1,46 +1,48 @@
 ﻿<Properties StartupConfiguration="{A872AEEB-BDD2-4579-BE5F-6934E90A46A7}|Default">
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/neab/Projects/Taraweb.V1/Controllers/UploadController.cs" relfile="Controllers/UploadController.cs" line="59" column="1" />
-    </BreakpointStore>
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.Taraweb PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Pages/_Layout.cshtml">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Pages/Web/NewsEventsComponent.razor">
     <Files>
-      <File FileName="Pages/CMS/Login.razor" />
-      <File FileName="Pages/CMS/Index.razor" />
-      <File FileName="Controllers/AccountController.cs" />
-      <File FileName="Program.cs" />
-      <File FileName="Shared/cms/MainLayout.razor" />
-      <File FileName="Shared/M1Frontend/M1Layout.razor" Line="34" Column="28" />
-      <File FileName="Shared/M1Frontend/NavMenu.razor" Line="1" Column="1" />
-      <File FileName="appsettings.json" Line="1" Column="1" />
-      <File FileName="Pages/_Layout.cshtml" Line="82" Column="4" />
+      <File FileName="Pages/CMS/AddPageCategory.razor" Line="44" Column="21" />
+      <File FileName="Pages/CMS/PageCategories.razor" Line="45" Column="46" />
+      <File FileName="Pages/CMS/Posts.razor" Line="168" Column="1" />
+      <File FileName="Services/TarawebM1Service.cs" Line="962" Column="1" />
+      <File FileName="Pages/CMS/PostForm.razor" Line="155" Column="1" />
+      <File FileName="Shared/M1Frontend/M1Layout.razor" Line="16" Column="22" />
+      <File FileName="Models/TarawebM1/Post.cs" Line="1" Column="1" />
+      <File FileName="Models/TarawebM1/Gallery.cs" Line="6" Column="33" />
+      <File FileName="Pages/Web/Main.razor" Line="29" Column="160" />
+      <File FileName="Shared/MainLayout.razor" Line="1" Column="1" />
+      <File FileName="Shared/M1Frontend/NavMenu.razor" Line="12" Column="161" />
+      <File FileName="Pages/Web/Aboutus.razor" Line="46" Column="44" />
+      <File FileName="Pages/Web/View.razor" Line="6" Column="1" />
+      <File FileName="Pages/Web/NewsEventsComponent.razor" Line="54" Column="62" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Taraweb" expanded="True">
             <Node name="Taraweb" expanded="True">
-              <Node name="Pages" expanded="True">
-                <Node name="CMS" expanded="True" />
+              <Node name="Controllers" expanded="True" />
+              <Node name="Data" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="TarawebM1" expanded="True" />
               </Node>
+              <Node name="Pages" expanded="True">
+                <Node name="Web" expanded="True">
+                  <Node name="NewsEventsComponent.razor" selected="True" />
+                </Node>
+              </Node>
+              <Node name="Services" expanded="True" />
               <Node name="Shared" expanded="True">
                 <Node name="cms" expanded="True" />
                 <Node name="M1Frontend" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
+                <Node name="cms" expanded="True">
+                  <Node name="css" expanded="True" />
+                </Node>
                 <Node name="M1" expanded="True">
-                  <Node name="assets" expanded="True" selected="True">
-                    <Node name="bootstrap" expanded="True">
-                      <Node name="css" expanded="True" />
-                      <Node name="js" expanded="True" />
-                    </Node>
-                    <Node name="js" expanded="True" />
-                  </Node>
                   <Node name="css" expanded="True" />
                 </Node>
               </Node>
@@ -51,4 +53,14 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/neab/Projects/Taraweb.V1/Controllers/UploadController.cs" relfile="Controllers/UploadController.cs" line="59" column="1" />
+      <Breakpoint file="/Users/neab/Projects/Taraweb.V1/Services/TarawebM1Service.cs" relfile="Services/TarawebM1Service.cs" line="169" column="1" />
+      <Breakpoint file="/Users/neab/Projects/Taraweb.V1/Services/SecurityService.cs" relfile="Services/SecurityService.cs" line="177" column="1" />
+      <Breakpoint file="/Users/neab/Projects/Taraweb.V1/Services/TarawebM1Service.cs" relfile="Services/TarawebM1Service.cs" line="1169" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.Taraweb PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MultiItemStartupConfigurations />
 </Properties>

@@ -105,14 +105,15 @@
 </RadzenTemplateForm>
 
 @code {
-    [Parameter]
-    public int? id { get; set; }
+        [Parameter]
+        public int? id { get; set; }
 
     public Post Posts { get; set; }
 
     public IEnumerable<PostContent> PostContents { get; set; }
     public IEnumerable<Language> languages { get; set; }
     public IEnumerable<PageCategory> PageCategories { get; set; }
+    protected Gallery gallery { get; set; }
     public bool showbanner { get; set; } = false;
     public string bannerpath { get; set; }
 
@@ -139,54 +140,58 @@
         else
         {
             Posts = await sv.GetPostById(id.Value);
+            if(Posts.Gallery != null) {
+                bannerpath = Posts.Gallery.Url;
+                showbanner = true;
+                }
+            }
+
         }
 
-    }
-
-    protected async Task FormSubmit()
-    {
-        try
+        protected async Task FormSubmit()
         {
-            if(Posts.Id == 0)
+            try
             {
-                await sv.CreatePost(Posts);
-        }
-        else
-        {
-                await sv.UpdatePost(Posts.Id, Posts);
-        }
+                if(Posts.Id == 0)
+                {
+                    await sv.CreatePost(Posts);
+                }
+                else
+                {
+                    await sv.UpdatePost(Posts.Id, Posts);
+                }
 
-            // NavigationManager.NavigateTo("/cms/posts");
-        }
-        catch (Exception ex)
-        {
-            NotificationService.Notify(new NotificationMessage
+                NavigationManager.NavigateTo("/cms/posts");
+            }
+            catch (Exception ex)
             {
-                Severity = NotificationSeverity.Error,
-                Summary = $"Error",
-                Detail = $"Unable to update Post"
-            });
+                NotificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = $"Error",
+                    Detail = $"Unable to update Post"
+                });
+            }
+        }
+
+        protected async Task CancelButtonClick(MouseEventArgs args)
+        {
+            NavigationManager.NavigateTo("/cms/posts");
+        }
+
+        void OnChangeText(string value, PostContent content)
+        {
+            var a = Utils.CreateSlug(value);
+            content.Slug = a;
+        }
+
+        void OnComplete(UploadCompleteEventArgs args)
+        {
+            var obj = Newtonsoft.Json.JsonConvert.DeserializeObject<UploadResponseModel>(args.RawResponse);
+            bannerpath = obj.Url;
+            Posts.GalleryId = obj.id;
+            showbanner = true;
+            Console.WriteLine($"Server response: {args.RawResponse}");
         }
     }
-
-    protected async Task CancelButtonClick(MouseEventArgs args)
-    {
-        NavigationManager.NavigateTo("/cms/posts");
-    }
-
-    void OnChangeText(string value, PostContent content)
-    {
-        var a = Utils.CreateSlug(value);
-        content.Slug = a;
-    }
-
-    void OnComplete(UploadCompleteEventArgs args)
-    {
-        var obj = Newtonsoft.Json.JsonConvert.DeserializeObject<UploadResponseModel>(args.RawResponse);
-        bannerpath = obj.Url;
-        Posts.GalleryId = obj.id;
-        showbanner = true;
-        Console.WriteLine($"Server response: {args.RawResponse}");
-    }
-}
 

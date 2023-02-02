@@ -8,16 +8,16 @@
 @inject NotificationService NotificationService
 
 @inject TarawebM1Service TarawebM1Service
-
+@attribute [Authorize]
 <PageTitle>Languages</PageTitle>
 <RadzenContent Container="main">
     <RadzenHeading Size="H1" Text="Languages" />
     <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@AddButtonClick" />
-    <RadzenSplitButton Icon="get_app" style="margin-left: 10px; margin-bottom: 10px" Text="Export" Click="@ExportClick">
+    @*<RadzenSplitButton Icon="get_app" style="margin-left: 10px; margin-bottom: 10px" Text="Export" Click="@ExportClick">
         <RadzenSplitButtonItem Text="Excel" Value="xlsx" />
         <RadzenSplitButtonItem Text="CSV" Value="csv" />
     </RadzenSplitButton>
-    <RadzenTextBox Placeholder="Search ..." style="display: block; margin-bottom: 10px; width: 100%" @oninput="@Search" />
+    <RadzenTextBox Placeholder="Search ..." style="display: block; margin-bottom: 10px; width: 100%" @oninput="@Search" />*@
     <div class="row">
         <div class="col-md-12">
             <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true"
@@ -27,12 +27,12 @@
                     </RadzenDataGridColumn>
                     <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Language" Property="IsActive" Title="IsActive">
                     </RadzenDataGridColumn>
-                    <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Language" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
-                        <Template Context="language">
-                            <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small"
-                                          Click=@(args => GridDeleteButtonClick(args, language)) @onclick:stopPropagation="true" />
-                        </Template>
-                    </RadzenDataGridColumn>
+                    @*<RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Language" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+            <Template Context="language">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small"
+                              Click=@(args => GridDeleteButtonClick(args, language)) @onclick:stopPropagation="true" />
+            </Template>
+        </RadzenDataGridColumn>*@
                 </Columns>
             </RadzenDataGrid>
         </div>

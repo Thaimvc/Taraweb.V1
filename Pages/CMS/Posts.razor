@@ -8,22 +8,30 @@
 @inject NotificationService NotificationService
 
 @inject TarawebM1Service TarawebM1Service
-
+@attribute [Authorize]
 <PageTitle>Posts</PageTitle>
 <RadzenContent Container="main">
     <RadzenHeading Size="H1" Text="Posts" />
     <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@AddButtonClick" />
-    <RadzenSplitButton Icon="get_app" style="margin-left: 10px; margin-bottom: 10px" Text="Export" Click="@ExportClick">
+    @*<RadzenSplitButton Icon="get_app" style="margin-left: 10px; margin-bottom: 10px" Text="Export" Click="@ExportClick">
         <RadzenSplitButtonItem Text="Excel" Value="xlsx" />
         <RadzenSplitButtonItem Text="CSV" Value="csv" />
-    </RadzenSplitButton>
-    <RadzenTextBox Placeholder="Search ..." style="display: block; margin-bottom: 10px; width: 100%" @oninput="@Search" />
+    </RadzenSplitButton>*@
+    <div class="row">
+        <div class="col-sm-4">
+            <RadzenDropDown Data="@pageCategories" TextProperty="CategoryCode" ValueProperty="Id" Placeholder="Choose PageCategory" style="display: block; width: 100%" @bind-Value="@pageCategoriesSelected" Name="PageCategoryId" Change="@OnChange" />
+        </div>
+        <div class="col-sm-8">
+            <RadzenTextBox Placeholder="Search ..." style="display: block; margin-bottom: 10px; width: 100%" @oninput="@Search" />
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-12">
             <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Responsive="true"
                             Data="@posts" TItem="Taraweb.Models.TarawebM1.Post" RowSelect="@EditRow">
                 <Columns>
-                  
+
                     <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Property="PageCategory.CategoryCode" Title="PageCategory">
                     </RadzenDataGridColumn>
                     <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Property="" Title="Gallery">
@@ -31,22 +39,31 @@
                             <RadzenImage Path="@data.Gallery.Url" Style="height:100px" />
                         </Template>
                     </RadzenDataGridColumn>
-                  
+                    <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post">
+                        <Template Context="post">
+                            @foreach (var p in post.PostContents)
+                            {
+                                <div>
+                                    @p.Language.Code : @p.Title
+                                </div>
+                            }
+                        </Template>
+                    </RadzenDataGridColumn>
                     <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Property="IsActive" Title="IsActive">
                     </RadzenDataGridColumn>
 
-                    <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Property="DateStart" Title="DateStart">
+                    <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Property="DateStart" Title="DateStart" FormatString="{0:dd/MM/yyyy}">
                     </RadzenDataGridColumn>
-                    <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Property="DateFinish" Title="DateFinish">
+                    <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Property="DateFinish" Title="DateFinish" FormatString="{0:dd/MM/yyyy}">
                     </RadzenDataGridColumn>
-                    <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Property="DateCreate" Title="DateCreate">
-                    </RadzenDataGridColumn>
-                    <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Property="UserCreateId" Title="UserCreateId">
-                    </RadzenDataGridColumn>
-                    <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Property="DateUpdate" Title="DateUpdate">
-                    </RadzenDataGridColumn>
-                    <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Property="UserUpdateId" Title="UserUpdateId">
-                    </RadzenDataGridColumn>
+                    @*<RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Property="DateCreate" Title="DateCreate">
+                        </RadzenDataGridColumn>
+                        <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Property="UserCreateId" Title="UserCreateId">
+                        </RadzenDataGridColumn>
+                        <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Property="DateUpdate" Title="DateUpdate">
+                        </RadzenDataGridColumn>
+                        <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Property="UserUpdateId" Title="UserUpdateId">
+                        </RadzenDataGridColumn>*@
 
                     <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.Post" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
                         <Template Context="post">
@@ -62,6 +79,9 @@
 @code {
 
     protected IEnumerable<Taraweb.Models.TarawebM1.Post> posts;
+    protected IEnumerable<Taraweb.Models.TarawebM1.PageCategory> pageCategories;
+    protected int pageCategoriesSelected { get; set; }
+
 
     protected RadzenDataGrid<Taraweb.Models.TarawebM1.Post> grid0;
 
@@ -73,11 +93,14 @@
 
         await grid0.GoToPage(0);
 
-        posts = await TarawebM1Service.GetPosts(new Query { Filter = $@"i => i.Content.Contains(@0)", FilterParameters = new object[] { search }, Expand = "Gallery,Language,PageCategory" });
+        posts = await TarawebM1Service.GetPosts(new Query { Filter = $@"i => i.PostContents.Any(a=>a.Title.Contains(@0))", FilterParameters = new object[] { search }, Expand = "Gallery,PageCategory,PostContents,PostContents.Language" });
+
+
     }
     protected override async Task OnInitializedAsync()
     {
-        posts = await TarawebM1Service.GetPosts(new Query { Expand = "Gallery,PageCategory" });
+        pageCategories = await TarawebM1Service.GetPageCategories(new Query());
+        posts = await TarawebM1Service.GetPosts(new Query {  Expand = "Gallery,PageCategory,PostContents,PostContents.Language" });
     }
 
     protected async Task AddButtonClick(MouseEventArgs args)
@@ -138,5 +161,12 @@
                 Select = string.Join(",", grid0.ColumnsCollection.Where(c => c.GetVisible()).Select(c => c.Property))
             }, "Posts");
         }
+    }
+
+    async Task OnChange(object value)
+    {
+        var str = value is IEnumerable<object> ? string.Join(", ", (IEnumerable<object>)value) : value;
+        posts = await TarawebM1Service.GetPosts(new Query { Filter = $@"i => i.PageCategoryId ==@0", FilterParameters = new object[] { value }, Expand = "Gallery,PageCategory,PostContents,PostContents.Language" });
+        Console.WriteLine($"Value changed to {str}");
     }
 }

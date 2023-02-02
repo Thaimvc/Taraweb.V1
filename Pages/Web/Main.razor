@@ -6,9 +6,9 @@
     <div class="container">
         <div class="bg-dark border rounded border-0 border-dark overflow-hidden">
             <div class="row g-0 ">
-                <div class="col-md-6 py-3 order-first" style="height: 350px;background: url(&quot;img/robots-car-plant_199107-834%20(1).png&quot;) no-repeat;background-size: cover;">
+                <div class="col-md-6 py-3 order-first" style="height: 350px;background: url(img/robots-car-plant_199107-834.png) no-repeat;background-size: cover;">
                     <div class="p-4 p-md-5">
-                        <h1 class="fw-bold text-light mb-3">Thai Automation<br>and<br>Robotics&nbsp;<br>Association</h1><a class="btn btn-light" href="#" style="border-radius: 0;">Link</a>
+                        <h1 class="fw-bold text-light mb-3">Thai Automation<br>and<br>Robotics&nbsp;<br>Association</h1><a class="btn btn-light" href="/web/@lang/view/6/about-us" style="border-radius: 0;">About us</a>
                     </div>
 
                 </div>
@@ -26,59 +26,59 @@
                     <div class="text-white p-4 p-md-5">
                         <h2 class="fw-bold text-white mb-3"><strong><span style="color: rgba(var(--bs-light-rgb), var(--bs-text-opacity)) ;">Thai Automation&nbsp;and</span></strong><br><strong><span style="color: rgba(var(--bs-light-rgb), var(--bs-text-opacity)) ;">Robotics&nbsp;Association</span></strong></h2>
                         <p class="mb-4" style="font-size: 0.8rem;">สมาคมผู้ประกอบการระบบอัตโนมัติและหุ่นยนต์ไทย (TARA) ประกอบด้วยสมาชิกนิติบุคคลไทยที่ทำธุรกิจทางด้านระบบอัตโนมัติและหุ่นยนต์ และ สมาชิกกิตติมศักดิ์ ได้แก่ ผู้ทรงคุณวุฒิ ผู้เชี่ยวชาญ ที่มีผลงาน ด้านระบบอัตโนมัติ หรือหุ่นยนต์ เป็นที่ประจักษ์</p>
-                        <div class="my-3"><a class="btn btn-primary btn-lg me-2" role="button" href="#">Button</a><a class="btn btn-light btn-lg" role="button" href="#">Button</a></div>
+                        <div class="my-3"><a class="btn btn-primary btn-lg me-2" role="button" href="https://taramember.ddns.net/membershipapp" target="_blank">Register</a><a class="btn btn-light btn-lg" role="button" href="https://taramember.ddns.net/disciplineAssociation" target="_blank">Benefit</a></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<AdBanner></AdBanner>
 
 
+        <section class="mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3>NEWS & EVENTS</h3>
+                        <NewsEventsComponent size="3" catid="1" lang="@lang" showsearch="false"> </NewsEventsComponent>
+                    </div>
+                </div>
 
 
-<section class="mt-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h3>NEWS & EVENTS</h3>
-                <NewsEventsComponent size="3" catid="1" lang="@lang" showsearch="false"> </NewsEventsComponent>
             </div>
-        </div>
-        
+        </section>
 
-    </div>
-</section>
+        <section class="mt-5">
+            <div class="container">
 
-<section class="mt-5">
-    <div class="container">
-        
-        <div class="row">
-            <div class="col-lg-12">
-                <h3>SEMINARS</h3>
-                <NewsEventsComponent size="3" catid="2" lang="@lang" showsearch="false"></NewsEventsComponent>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3>SEMINARS</h3>
+                        <NewsEventsComponent size="3" catid="2" lang="@lang" showsearch="false"></NewsEventsComponent>
+                    </div>
+                </div>
+
             </div>
-        </div>
+        </section>
+        @code{
+            [Parameter]
+            public string lang { get; set; }
+            [CascadingParameter]
+            Taraweb.Shared.M1Frontend.M1Layout layout { get; set; }
 
-    </div>
-</section>
-@code{
-    [Parameter]
-    public string lang { get; set; }
-    [CascadingParameter]
-    Taraweb.Shared.M1Frontend.M1Layout layout { get; set; }
+           
 
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await localStorage.SetItemAsync<string>("lang", lang);
-    }
-    protected override async Task OnInitializedAsync()
-    {
-        base.OnInitialized();
-
+            
+            protected override async Task OnAfterRenderAsync(bool firstRender)
+            {
+                await localStorage.SetItemAsync<string>("lang", lang);
+            }
+            protected override async Task OnInitializedAsync()
+            {
+                base.OnInitialized();
 
 
-    }
-}
+            }
+        }
 

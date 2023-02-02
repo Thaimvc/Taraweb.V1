@@ -30,6 +30,7 @@ builder.Services.AddBlazoredSessionStorage();
 builder.Services.AddDbContext<Taraweb.Data.TarawebM1Context>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("TarawebM1Connection"));
+    options.EnableSensitiveDataLogging();
 });
 builder.Services.AddHttpClient("AuthenTest").AddHeaderPropagation(o => o.Headers.Add("Cookie"));
 builder.Services.AddHeaderPropagation(o => o.Headers.Add("Cookie"));

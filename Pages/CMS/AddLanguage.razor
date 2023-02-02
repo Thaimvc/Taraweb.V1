@@ -1,4 +1,5 @@
 @page "/cms/add-language"
+@page "/cms/add-language/{id:int}"
 @layout Taraweb.Shared.cms.MainLayout
 @inject IJSRuntime JSRuntime
 @inject NavigationManager NavigationManager
@@ -10,6 +11,7 @@
 @inject TarawebM1Service TarawebM1Service
 
 <PageTitle>Add Language</PageTitle>
+<h3>Add Language</h3>
 <RadzenContent Container="main">
     <div class="col-md-12">
         <RadzenTemplateForm TItem="Taraweb.Models.TarawebM1.Language" Data="@language" Visible="@(language != null)" Submit="@FormSubmit">
@@ -41,10 +43,19 @@
     </div>
 </RadzenContent>
 @code {
-
+    [Parameter]
+    public int? id { get; set; }
     protected override async Task OnInitializedAsync()
     {
-        language = new Taraweb.Models.TarawebM1.Language();
+        if (id != null)
+        {
+            language = await TarawebM1Service.GetLanguageById(id.Value);
+        }
+        else
+        {
+            language = new Taraweb.Models.TarawebM1.Language();
+        }
+
     }
     protected Taraweb.Models.TarawebM1.Language language;
 
@@ -68,6 +79,6 @@
 
     protected async Task CancelButtonClick(MouseEventArgs args)
     {
-        NavigationManager.NavigateTo("languages");
+        NavigationManager.NavigateTo("cms/languages");
     }
 }

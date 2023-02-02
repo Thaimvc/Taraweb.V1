@@ -80,7 +80,7 @@ namespace Taraweb
 
                 if (userId != null && User?.Id != userId)
                 {
-                    User = await GetUserById(userId);
+                    User = new ApplicationUser() { Name = Principal.Identity.Name };
                 }
             }
 

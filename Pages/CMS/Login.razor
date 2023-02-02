@@ -1,40 +1,46 @@
 ﻿@page "/cms/login"
-@layout Taraweb.Shared.cms.MainLayout
+@layout Taraweb.Shared.cms.LoginLayout
 @inject IJSRuntime JSRuntime
 @inject NavigationManager NavigationManager
 @inject DialogService DialogService
 @inject NotificationService NotificationService
+    <p class="text-center">
+        <img src="M1/assets/img/logo.png">
+    </p>
+    <h3 class="text-center">Content Management System</h3>
+    
+            <RadzenTemplateForm Action="@($" account/login?redirectUrl={redirectUrl}")" Data="@("login")"
+                                Method="post" >
+                <RadzenLogin AllowResetPassword="false" AllowRegister="false"  Login="OnLogin" />
+            </RadzenTemplateForm>
+            <RadzenText Visible="checklogin">Loging in...</RadzenText>
 
-<h3>Login page</h3>
-<div class="row">
-    <div class="col-md-12">
-        <RadzenTemplateForm Action="@($" account/login?redirectUrl={redirectUrl}")" Data="@("login")"
-                            Method="post">
-            <RadzenLogin AllowResetPassword="false" AllowRegister="false" />
-        </RadzenTemplateForm>
-    </div>
-</div>
-@code {
-    protected string redirectUrl;
-   
+    @code {
+        protected string redirectUrl;
 
-    protected override async Task OnInitializedAsync()
-    {
-        var query = System.Web.HttpUtility.ParseQueryString(new Uri(NavigationManager.ToAbsoluteUri(NavigationManager.Uri).ToString()).Query);
-
-        var error = query.Get("error");
-        var info = query.Get("info");
-        redirectUrl = query.Get("redirectUrl");
-
-        if (!string.IsNullOrEmpty(error))
+        protected bool checklogin = false;
+        protected override async Task OnInitializedAsync()
         {
-            NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Error, Summary = $"Error", Detail = error });
+            var query = System.Web.HttpUtility.ParseQueryString(new Uri(NavigationManager.ToAbsoluteUri(NavigationManager.Uri).ToString()).Query);
+
+            var error = query.Get("error");
+            var info = query.Get("info");
+            redirectUrl = query.Get("redirectUrl");
+
+            if (!string.IsNullOrEmpty(error))
+            {
+                NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Error, Summary = $"Error", Detail = error });
+            }
+
+            if (!string.IsNullOrEmpty(info))
+            {
+                NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Info, Summary = $"Info", Detail = info });
+            }
         }
 
-        if (!string.IsNullOrEmpty(info))
+        void OnLogin()
         {
-            NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Info, Summary = $"Info", Detail = info });
+            checklogin = true;
         }
     }
-}
 

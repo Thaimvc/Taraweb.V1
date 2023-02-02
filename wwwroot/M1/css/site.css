@@ -3,6 +3,9 @@
 html, body {
     font-family: 'Prompt', sans-serif;
 }
+body {
+    background-image: none !important;
+}
 .navbar-inverse.nav-upper {
     height: 50px;
 }

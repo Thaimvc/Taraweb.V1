@@ -11,6 +11,8 @@ using Microsoft.EntityFrameworkCore;
 using Radzen;
 
 using Taraweb.Data;
+using Taraweb.Models.TarawebM1;
+
 
 namespace Taraweb
 {
@@ -46,7 +48,148 @@ namespace Taraweb
             navigationManager.NavigateTo(query != null ? query.ToUrl($"export/tarawebm1/galleries/csv(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')") : $"export/tarawebm1/galleries/csv(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')", true);
         }
 
+        partial void OnBannersRead(ref IQueryable<Taraweb.Models.TarawebM1.Banner> items);
+        public async Task<IQueryable<Taraweb.Models.TarawebM1.Banner>> GetBanners(Query query = null)
+        {
+            var items = Context.Banners.AsQueryable();
+
+            if (query != null)
+            {
+                if (!string.IsNullOrEmpty(query.Expand))
+                {
+                    var propertiesToExpand = query.Expand.Split(',');
+                    foreach (var p in propertiesToExpand)
+                    {
+                        items = items.Include(p.Trim());
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(query.Filter))
+                {
+                    if (query.FilterParameters != null)
+                    {
+                        items = items.Where(query.Filter, query.FilterParameters);
+                    }
+                    else
+                    {
+                        items = items.Where(query.Filter);
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(query.OrderBy))
+                {
+                    items = items.OrderBy(query.OrderBy);
+                }
+
+                if (query.Skip.HasValue)
+                {
+                    items = items.Skip(query.Skip.Value);
+                }
+
+                if (query.Top.HasValue)
+                {
+                    items = items.Take(query.Top.Value);
+                }
+            }
+
+            OnBannersRead(ref items);
+
+            return await Task.FromResult(items);
+        }
+
+        public async Task<IQueryable<Banner>> GetBannerForWeb()
+        {
+            var items = Context.Banners.Where(w=>w.DateStart<=DateTime.Today && w.DateFinish > DateTime.Today).OrderByDescending(o=>o.Id).AsQueryable();
+            return await Task.FromResult(items);
+        }
+
+        partial void OnBannerGet(Taraweb.Models.TarawebM1.Banner item);
+
+        public async Task<Taraweb.Models.TarawebM1.Banner> GetBannerById(int id)
+        {
+            var items = Context.Banners
+                              .AsNoTracking()
+                              .Where(i => i.Id == id);
+
+
+            var itemToReturn = items.FirstOrDefault();
+
+            OnBannerGet(itemToReturn);
+
+            return await Task.FromResult(itemToReturn);
+        }
+
+        partial void OnBannerCreated(Taraweb.Models.TarawebM1.Banner item);
+        partial void OnAfterBannerCreated(Taraweb.Models.TarawebM1.Banner item);
+
+        public async Task<Taraweb.Models.TarawebM1.Banner> CreateBanner(Taraweb.Models.TarawebM1.Banner banner)
+        {
+            OnBannerCreated(banner);
+
+            var existingItem = Context.Banners
+                              .Where(i => i.Id == banner.Id)
+                              .FirstOrDefault();
+
+            if (existingItem != null)
+            {
+                throw new Exception("Item already available");
+            }
+
+            try
+            {
+                Context.Banners.Add(banner);
+                Context.SaveChanges();
+            }
+            catch
+            {
+                Context.Entry(banner).State = EntityState.Detached;
+                throw;
+            }
+
+            OnAfterBannerCreated(banner);
+
+            return banner;
+        }
+        partial void OnBannerDeleted(Taraweb.Models.TarawebM1.Banner item);
+        partial void OnAfterBannerDeleted(Taraweb.Models.TarawebM1.Banner item);
+
+        public async Task<Taraweb.Models.TarawebM1.Banner> DeleteBanner(int id)
+        {
+            var itemToDelete = Context.Banners
+                              .Where(i => i.Id == id)
+                             
+                              .FirstOrDefault();
+
+            if (itemToDelete == null)
+            {
+                throw new Exception("Item no longer available");
+            }
+
+            OnBannerDeleted(itemToDelete);
+
+
+            Context.Banners.Remove(itemToDelete);
+
+            try
+            {
+                System.IO.File.Delete("wwwroot/"+itemToDelete.ImageUrl);
+                Context.SaveChanges();
+
+                
+            }
+            catch
+            {
+                Context.Entry(itemToDelete).State = EntityState.Unchanged;
+                throw;
+            }
+
+            OnAfterBannerDeleted(itemToDelete);
+
+            return itemToDelete;
+        }
+
         partial void OnGalleriesRead(ref IQueryable<Taraweb.Models.TarawebM1.Gallery> items);
+
 
         public async Task<IQueryable<Taraweb.Models.TarawebM1.Gallery>> GetGalleries(Query query = null)
         {
@@ -491,8 +634,8 @@ namespace Taraweb
 
             if (existingItem != null)
             {
-               throw new Exception("Item already available");
-            }            
+                throw new Exception("Item already available");
+            }
 
             try
             {
@@ -598,7 +741,7 @@ namespace Taraweb
 
         public async Task<IQueryable<Taraweb.Models.TarawebM1.Post>> GetPosts(Query query = null)
         {
-            var items = Context.Posts.AsQueryable();
+            var items = Context.Posts.Where(i => (i.GalleryId != null)).OrderByDescending(o=>o.Id).AsQueryable();
 
             if (query != null)
             {
@@ -745,8 +888,11 @@ namespace Taraweb
 
         partial void OnPostGet(Taraweb.Models.TarawebM1.Post item);
 
-        public async Task<IQueryable<Taraweb.Models.TarawebM1.Post>> GetPostByCategoryId(int catid, Query query=null)
+       
+
+        public async Task<IQueryable<Taraweb.Models.TarawebM1.Post>> GetPostByCategoryId(int catid, Query query=null,int size=0)
         {
+           
             var items = Context.Posts.Where(w=>w.PageCategoryId==catid).AsQueryable();
             if (query != null)
             {
@@ -785,18 +931,34 @@ namespace Taraweb
                 {
                     items = items.Take(query.Top.Value);
                 }
+                
             }
             OnPostsRead(ref items);
 
             return await Task.FromResult(items);
         }
-        public async Task<Taraweb.Models.TarawebM1.PostContent> GetPostContentBySlug(string slug,string lang)
+        public async Task<Taraweb.Models.TarawebM1.PostContent> GetPostContentBySlug(string slug, string lang)
         {
             var items = Context.PostContents
                 .Include(i => i.Post.Gallery)
                 .Include(i => i.Post.PageCategory)
                               .AsNoTracking()
-                              .Where(i => i.Slug == slug && i.Language.Code==lang).FirstOrDefault();
+                              .Where(i => i.Slug==slug && i.Language.Code == lang).FirstOrDefault();
+
+
+
+
+            OnPostContentGet(items);
+
+            return await Task.FromResult(items);
+        }
+        public async Task<Taraweb.Models.TarawebM1.PostContent> GetPostContentByPostId(int postid,string lang)
+        {
+            var items = Context.PostContents
+                .Include(i => i.Post.Gallery)
+                .Include(i => i.Post.PageCategory)
+                              .AsNoTracking()
+                              .Where(i => i.PostId == postid && i.Language.Code==lang).FirstOrDefault();
 
           
             
@@ -806,10 +968,17 @@ namespace Taraweb
             return await Task.FromResult(items);
         }
         partial void OnPostContentGet(Taraweb.Models.TarawebM1.PostContent item);
+        protected int loadsize = 1;
 
-        public async Task<IQueryable<Taraweb.Models.TarawebM1.PostContent>> GetPostContentByCategoryId(int catid,string lang, Query query = null)
+        public async Task resetloadsize(int sizetoload=9)
         {
-            var items = Context.PostContents.Where(w => w.Language.Code==lang&& w.Post.PageCategoryId == catid).AsQueryable();
+            loadsize = sizetoload;
+        }
+
+        public async Task<IQueryable<Taraweb.Models.TarawebM1.PostContent>> GetPostContentByCategoryId(int catid,string lang, Query query = null, int size=0)
+        {
+            loadsize += size;
+            var items = Context.PostContents.Where(w => w.Language.Code==lang&& w.Post.PageCategoryId == catid && w.Post.IsActive==true && w.Post.DateStart<=DateTime.Today && w.Post.DateFinish > DateTime.Today).Take(loadsize).AsQueryable();
             if (query != null)
             {
                 if (!string.IsNullOrEmpty(query.Expand))
@@ -892,9 +1061,13 @@ namespace Taraweb
         public async Task<Taraweb.Models.TarawebM1.Post> CreatePost(Taraweb.Models.TarawebM1.Post post)
         {
             OnPostCreated(post);
-            if (post.Gallery == null)
+            if (post.GalleryId == 0)
             {
                 post.Gallery = await context.Galleries.Where(w => w.Id ==1).FirstOrDefaultAsync();
+            }
+            else
+            {
+                post.Gallery = await context.Galleries.Where(w => w.Id == post.GalleryId).FirstOrDefaultAsync();
             }
             post.DateCreate = DateTime.Now;
             post.DateUpdate = DateTime.Now;
@@ -982,6 +1155,7 @@ namespace Taraweb
         public async Task<Taraweb.Models.TarawebM1.Post> DeletePost(int id)
         {
             var itemToDelete = Context.Posts
+                .Include(i=>i.PostContents)
                               .Where(i => i.Id == id)
                               .FirstOrDefault();
 
@@ -993,10 +1167,13 @@ namespace Taraweb
             OnPostDeleted(itemToDelete);
 
 
-            Context.Posts.Remove(itemToDelete);
+            
 
             try
             {
+                itemToDelete.IsActive = false;
+                itemToDelete.GalleryId = null;
+                
                 Context.SaveChanges();
             }
             catch

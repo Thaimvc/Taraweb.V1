@@ -8,16 +8,16 @@
 @inject NotificationService NotificationService
 
 @inject TarawebM1Service TarawebM1Service
-
+@attribute [Authorize]
 <PageTitle>PageCategories</PageTitle>
 <RadzenContent Container="main">
     <RadzenHeading Size="H1" Text="PageCategories" />
     <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@AddButtonClick" />
-    <RadzenSplitButton Icon="get_app" style="margin-left: 10px; margin-bottom: 10px" Text="Export" Click="@ExportClick">
+    @*<RadzenSplitButton Icon="get_app" style="margin-left: 10px; margin-bottom: 10px" Text="Export" Click="@ExportClick">
         <RadzenSplitButtonItem Text="Excel" Value="xlsx" />
         <RadzenSplitButtonItem Text="CSV" Value="csv" />
     </RadzenSplitButton>
-    <RadzenTextBox Placeholder="Search ..." style="display: block; margin-bottom: 10px; width: 100%" @oninput="@Search" />
+    <RadzenTextBox Placeholder="Search ..." style="display: block; margin-bottom: 10px; width: 100%" @oninput="@Search" />*@
     <div class="row">
         <div class="col-md-12">
             <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true"
@@ -27,22 +27,22 @@
                     </RadzenDataGridColumn>
                     <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.PageCategory" Property="CategoryName" Title="CategoryName">
                     </RadzenDataGridColumn>
-                    <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.PageCategory" Property="Sorting" Title="Sorting">
-                    </RadzenDataGridColumn>
+                    @*<RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.PageCategory" Property="Sorting" Title="Sorting">
+                    </RadzenDataGridColumn>*@
                     <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.PageCategory" Property="link" Title="link">
                     </RadzenDataGridColumn>
                     <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.PageCategory" Property="IsActive" Title="IsActive">
                     </RadzenDataGridColumn>
-                    <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.PageCategory" Property="DateCreate" Title="DateCreate">
+                    <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.PageCategory" Property="DateCreate" Title="DateCreate" FormatString="{0:dd/MM/yyyy}">
                     </RadzenDataGridColumn>
-                    <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.PageCategory" Property="Language.Code" Title="Language">
-                    </RadzenDataGridColumn>
-                    <RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.PageCategory" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+                    @*<RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.PageCategory" Property="Language.Code" Title="Language">
+                    </RadzenDataGridColumn>*@
+                    @*<RadzenDataGridColumn TItem="Taraweb.Models.TarawebM1.PageCategory" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
                         <Template Context="pageCategory">
                             <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small"
                                           Click=@(args => GridDeleteButtonClick(args, pageCategory)) @onclick:stopPropagation="true" />
                         </Template>
-                    </RadzenDataGridColumn>
+                    </RadzenDataGridColumn>*@
                 </Columns>
             </RadzenDataGrid>
         </div>

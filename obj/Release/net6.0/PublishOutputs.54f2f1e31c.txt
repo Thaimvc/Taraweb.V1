@@ -9,6 +9,10 @@
 /Users/neab/Projects/Publish/Taraweb.M1/Blazored.SessionStorage.dll
 /Users/neab/Projects/Publish/Taraweb.M1/DocumentFormat.OpenXml.dll
 /Users/neab/Projects/Publish/Taraweb.M1/Humanizer.dll
+/Users/neab/Projects/Publish/Taraweb.M1/Microsoft.AspNetCore.HeaderPropagation.dll
+/Users/neab/Projects/Publish/Taraweb.M1/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/Users/neab/Projects/Publish/Taraweb.M1/Microsoft.AspNetCore.OData.dll
+/Users/neab/Projects/Publish/Taraweb.M1/Microsoft.Bcl.AsyncInterfaces.dll
 /Users/neab/Projects/Publish/Taraweb.M1/Microsoft.Data.SqlClient.dll
 /Users/neab/Projects/Publish/Taraweb.M1/Microsoft.EntityFrameworkCore.dll
 /Users/neab/Projects/Publish/Taraweb.M1/Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -21,6 +25,10 @@
 /Users/neab/Projects/Publish/Taraweb.M1/Microsoft.IdentityModel.Protocols.dll
 /Users/neab/Projects/Publish/Taraweb.M1/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /Users/neab/Projects/Publish/Taraweb.M1/Microsoft.IdentityModel.Tokens.dll
+/Users/neab/Projects/Publish/Taraweb.M1/Microsoft.OData.Core.dll
+/Users/neab/Projects/Publish/Taraweb.M1/Microsoft.OData.Edm.dll
+/Users/neab/Projects/Publish/Taraweb.M1/Microsoft.OData.ModelBuilder.dll
+/Users/neab/Projects/Publish/Taraweb.M1/Microsoft.Spatial.dll
 /Users/neab/Projects/Publish/Taraweb.M1/Microsoft.Win32.SystemEvents.dll
 /Users/neab/Projects/Publish/Taraweb.M1/Newtonsoft.Json.dll
 /Users/neab/Projects/Publish/Taraweb.M1/Radzen.Blazor.dll

@@ -1,4 +1,4 @@
-﻿@page "/web/{lang}/view/{slug}"
+﻿@page "/web/{lang}/view/{postid:int}/{slug}"
 @layout Taraweb.Shared.M1Frontend.M1Layout
 
     <div class="row mt-5">
@@ -22,13 +22,16 @@
     [Parameter]
     public string slug { get; set; }
 
+    [Parameter]
+    public int postid { get; set; }
+
     [Inject]
     TarawebM1Service sv { get; set; }
 
     public Taraweb.Models.TarawebM1.PostContent postcontent { get; set; }
     protected override async Task OnInitializedAsync()
     {
-        postcontent = await sv.GetPostContentBySlug(slug,lang);
+        postcontent = await sv.GetPostContentByPostId(postid,lang);
     }
 }
 

@@ -65,3 +65,12 @@
 /Users/neab/Projects/Taraweb.V1/obj/Release/net6.0/ref/Taraweb.dll
 /Users/neab/Projects/Taraweb.V1/obj/Release/net6.0/Taraweb.pdb
 /Users/neab/Projects/Taraweb.V1/obj/Release/net6.0/Taraweb.genruntimeconfig.cache
+/Users/neab/Projects/Taraweb.V1/bin/Release/net6.0/Microsoft.AspNetCore.HeaderPropagation.dll
+/Users/neab/Projects/Taraweb.V1/bin/Release/net6.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/Users/neab/Projects/Taraweb.V1/bin/Release/net6.0/Microsoft.AspNetCore.OData.dll
+/Users/neab/Projects/Taraweb.V1/bin/Release/net6.0/Microsoft.Bcl.AsyncInterfaces.dll
+/Users/neab/Projects/Taraweb.V1/bin/Release/net6.0/Microsoft.OData.Core.dll
+/Users/neab/Projects/Taraweb.V1/bin/Release/net6.0/Microsoft.OData.Edm.dll
+/Users/neab/Projects/Taraweb.V1/bin/Release/net6.0/Microsoft.OData.ModelBuilder.dll
+/Users/neab/Projects/Taraweb.V1/bin/Release/net6.0/Microsoft.Spatial.dll
+/Users/neab/Projects/Taraweb.V1/obj/Release/net6.0/Taraweb.MvcApplicationPartsAssemblyInfo.cs

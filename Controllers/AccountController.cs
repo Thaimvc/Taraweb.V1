@@ -11,6 +11,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Taraweb.Models;
+using Newtonsoft.Json;
+using Taraweb.Models.TarawebM1;
+using Taraweb.Middleware.ModelM4s;
+using System.Text;
+using Taraweb.Middleware.Models;
 
 namespace Taraweb.Controllers
 {
@@ -37,40 +42,65 @@ namespace Taraweb.Controllers
         {
              if (!string.IsNullOrEmpty(redirectUrl))
              {
-                 return Redirect($"~/Login?error={error}&redirectUrl={Uri.EscapeDataString(redirectUrl)}");
+                 return Redirect($"~/cms/Login?error={error}&redirectUrl={Uri.EscapeDataString(redirectUrl)}");
              }
              else
              {
-                 return Redirect($"~/Login?error={error}");
+                 return Redirect($"~/cms/Login?error={error}");
              }
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(string userName, string password, string redirectUrl)
+        public async Task<IActionResult> Login(UserLoginModel model, string redirectUrl)
         {
-            if (env.EnvironmentName == "Development" && userName == "admin" && password == "admin")
+            //if (env.EnvironmentName == "Development" && userName == "admin" && password == "admin")
+            //{
+            //    var claims = new List<Claim>()
+            //    {
+            //        new Claim(ClaimTypes.Name, "neabadmin"),
+            //        new Claim(ClaimTypes.Email, "neabemailadmin"),
+            //        new Claim(ClaimTypes.Role,"admin")
+            //    };
+
+            //    roleManager.Roles.ToList().ForEach(r => claims.Add(new Claim(ClaimTypes.Role, r.Name)));
+            //    await signInManager.SignInWithClaimsAsync(new ApplicationUser { UserName = userName, Email = userName }, isPersistent: false, claims);
+
+            //    return Redirect($"~/{redirectUrl}");
+            //}
+
+            if (!string.IsNullOrEmpty(model.UserName) && !string.IsNullOrEmpty(model.Password))
             {
-                var claims = new List<Claim>()
+                using (var client = new HttpClient())
                 {
-                    new Claim(ClaimTypes.Name, "neabadmin"),
-                    new Claim(ClaimTypes.Email, "neabemailadmin"),
-                    new Claim(ClaimTypes.Role,"admin")
-                };
+                    var json = JsonConvert.SerializeObject(model);
+                    var data = new StringContent(json, Encoding.UTF8, "application/json");
+                    HttpResponseMessage response = await client.PostAsync("http://119.59.114.151:8001/api/User",data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        // Read the response content
+                        string content = await response.Content.ReadAsStringAsync();
+                        User user = JsonConvert.DeserializeObject<User>(content);
+                        // Do something with the response content
+                        Console.WriteLine(content);
+                    
+                        if(user.Id != 0) { 
+                        var claims = new List<Claim>()
+                        {
+                            new Claim(ClaimTypes.Name, user.LoginName),
+                            new Claim(ClaimTypes.Email, user.Email),
+                            new Claim(ClaimTypes.Role,"admin")
+                        };
 
-                roleManager.Roles.ToList().ForEach(r => claims.Add(new Claim(ClaimTypes.Role, r.Name)));
-                await signInManager.SignInWithClaimsAsync(new ApplicationUser { UserName = userName, Email = userName }, isPersistent: false, claims);
 
-                return Redirect($"~/{redirectUrl}");
-            }
+                        await signInManager.SignInWithClaimsAsync(new ApplicationUser { UserName = user.LoginName, Email = user.Email }, isPersistent: false, claims);
 
-            if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(password))
-            {
-                var result = await signInManager.PasswordSignInAsync(userName, password, false, false);
-
-                if (result.Succeeded)
-                {
-                    return Redirect($"~/{redirectUrl}");
+                        return Redirect($"~/{redirectUrl}");
+                        }
+                    }
                 }
+               
+
+               
             }
 
             return RedirectWithError("Invalid user or password", redirectUrl);

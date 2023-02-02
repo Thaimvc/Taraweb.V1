@@ -19,6 +19,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/neab/Projects/Taraweb.V1/Pages/CMS/AddBanner.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ01TL0FkZEJhbm5lci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/neab/Projects/Taraweb.V1/Pages/CMS/AddGallery.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ01TL0FkZEdhbGxlcnkucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -33,6 +37,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/neab/Projects/Taraweb.V1/Pages/CMS/AddPost.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ01TL0FkZFBvc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/neab/Projects/Taraweb.V1/Pages/CMS/Banner.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ01TL0Jhbm5lci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/neab/Projects/Taraweb.V1/Pages/CMS/Galleries.razor]
@@ -75,6 +83,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvV2ViL0Fib3V0dXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/neab/Projects/Taraweb.V1/Pages/Web/AdBanner.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvV2ViL0FkQmFubmVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/neab/Projects/Taraweb.V1/Pages/Web/Contactus.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvV2ViL0NvbnRhY3R1cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -105,6 +117,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/neab/Projects/Taraweb.V1/Pages/Web/Viewnewsevents.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvV2ViL1ZpZXduZXdzZXZlbnRzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/neab/Projects/Taraweb.V1/Shared/cms/LoginLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL2Ntcy9Mb2dpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/neab/Projects/Taraweb.V1/Shared/cms/MainLayout.razor]

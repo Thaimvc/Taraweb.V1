@@ -1,10 +1,31 @@
-﻿@page "/web/{lang}/about-us"
+﻿@page "/web/{lang}/view/{postid:int}/about-us"
 @layout Taraweb.Shared.M1Frontend.M1Layout
-<h3>About Us</h3>
+<div class="row">
+    <div class="col-sm-12">
+        <img src="/img/about.png" class="img-fluid" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12" >
+        <div style="background-color: #008dbd; padding:2rem; color:#FFF;" >
+            <h4>@postcontent.Title</h4>
+            @((MarkupString)@postcontent.Content)
+        </div>
+        
+    </div>
+</div>
+
+
+
+
 
 @code {
     [Parameter]
     public string lang { get; set; }
+
+    [Parameter]
+    public int postid { get; set; }
+
     [CascadingParameter]
     Taraweb.Shared.M1Frontend.M1Layout layout { get; set; }
 
@@ -14,5 +35,14 @@
         base.OnInitialized();
         layout.LanguageBar = lang;
 
+    }
+
+    [Inject]
+    TarawebM1Service sv { get; set; }
+
+    public Taraweb.Models.TarawebM1.PostContent postcontent { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        postcontent = await sv.GetPostContentByPostId(postid, lang);
     }
 }

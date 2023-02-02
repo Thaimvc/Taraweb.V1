@@ -4,9 +4,7 @@
             <NotAuthorized>
                 <RedirectToLogin IsAuthenticated="@context.User.Identity.IsAuthenticated" />
             </NotAuthorized>
-            <Authorizing>
-                Authorizing ...
-            </Authorizing>
+           <Authorizing></Authorizing>
         </AuthorizeRouteView>
         <FocusOnNavigate RouteData="@routeData" Selector="h1" />
     </Found>

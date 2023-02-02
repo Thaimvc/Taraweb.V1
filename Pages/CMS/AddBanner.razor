@@ -1,0 +1,111 @@
+﻿@page "/cms/add-banner"
+
+
+@layout Taraweb.Shared.cms.MainLayout
+@using Taraweb.Models.TarawebM1;
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+@inject DialogService DialogService
+@inject ContextMenuService ContextMenuService
+@inject TooltipService TooltipService
+@inject NotificationService NotificationService
+
+@inject TarawebM1Service TarawebM1Service
+
+<PageTitle>Add Banner</PageTitle>
+<h3>Add Banner</h3>
+<RadzenContent Container="main">
+    <div class="col-md-12">
+        <RadzenTemplateForm TItem="Taraweb.Models.TarawebM1.Banner" Data="@banner" Visible="@(banner != null)" Submit="@FormSubmit">
+            <div style="margin-bottom: 1rem" class="row">
+                <div class="col-md-3">
+                    <RadzenLabel Text="Name" Component="Name" style="width: 100%" />
+                </div>
+                <div class="col-md-9">
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@banner.Name" Name="Name" />
+                    <RadzenRequiredValidator Component="Name" Text="Name is required" style="position: absolute" />
+                </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+                <div class="col-md-3">
+                    <RadzenLabel Text="Url" Component="Url" style="width: 100%" />
+                </div>
+                <div class="col-md-9">
+                    <RadzenImage Path="@bannerpath" Visible="@showbanner" Style="height:100px"></RadzenImage>
+                    <RadzenUpload Url="upload/single" Accept="image/*" Complete="OnComplete"></RadzenUpload>
+                </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+                <div class="col-md-3">
+                    <RadzenLabel Text="DateStart" Component="DateStart" style="width: 100%" />
+                </div>
+                <div class="col-md-9">
+                    <RadzenDatePicker DateFormat="dd/MM/yyyy" style="display: block; width: 100%" @bind-Value="@banner.DateStart" Name="DateStart" />
+                    <RadzenRequiredValidator Component="DateStart" Text="DateStart is required" style="position: absolute" />
+                </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+                <div class="col-md-3">
+                    <RadzenLabel Text="DateFinish" Component="DateFinish" style="width: 100%" />
+                </div>
+                <div class="col-md-9">
+                    <RadzenDatePicker DateFormat="dd/MM/yyyy" style="display: block; width: 100%" @bind-Value="@banner.DateFinish" Name="DateFinish" />
+                    <RadzenRequiredValidator Component="DateFinish" Text="DateFinish is required" style="position: absolute" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col offset-sm-3">
+                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" ButtonStyle="ButtonStyle.Primary" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" style="margin-left: 1rem" Text="Cancel" Click="@CancelButtonClick" />
+                </div>
+            </div>
+        </RadzenTemplateForm>
+    </div>
+</RadzenContent>
+@code {
+
+    [Parameter]
+    public int? id { get; set; }
+
+    public bool showbanner { get; set; } = false;
+    public string bannerpath { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        banner = new Taraweb.Models.TarawebM1.Banner();
+        banner.DateStart = DateTime.Today;
+        banner.DateFinish = DateTime.Today.AddYears(1);
+    }
+    protected Taraweb.Models.TarawebM1.Banner banner;
+
+    protected async Task FormSubmit()
+    {
+        try
+        {
+            await TarawebM1Service.CreateBanner(banner);
+            NavigationManager.NavigateTo("cms/banner");
+        }
+        catch (Exception ex)
+        {
+            NotificationService.Notify(new NotificationMessage
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = $"Error",
+                Detail = $"Unable to update Gallery"
+            });
+        }
+    }
+
+    protected async Task CancelButtonClick(MouseEventArgs args)
+    {
+        NavigationManager.NavigateTo("cms/banner");
+    }
+
+    void OnComplete(UploadCompleteEventArgs args)
+    {
+        var obj = Newtonsoft.Json.JsonConvert.DeserializeObject<UploadResponseModel>(args.RawResponse);
+        bannerpath = obj.Url;
+        banner.ImageUrl = obj.Url;
+        showbanner = true;
+        Console.WriteLine($"Server response: {args.RawResponse}");
+    }
+}

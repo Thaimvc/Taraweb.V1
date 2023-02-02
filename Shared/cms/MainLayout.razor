@@ -19,7 +19,8 @@
                 <RadzenLabel Text="Taraweb.Backend"></RadzenLabel>
             </div>
             <div class="col-6 d-flex align-items-center justify-content-end">
-                <button @onclick="@logout">Logout</button>
+                @Security.User.Name 
+                <button @onclick="@logout" style="margin-left:5px">Logout</button>
             </div>
         </div>
     </RadzenHeader>
@@ -31,7 +32,8 @@
     <RadzenSidebar Expanded="@sidebarExpanded">
         <RadzenPanelMenu style="height: 100%">
             <RadzenPanelMenuItem Text="Home" Path="/cms/home" />
-            <RadzenPanelMenuItem Text="Galleries" Path="/cms/galleries" />
+            <RadzenPanelMenuItem Text="Banner" Path="/cms/banner" />
+            @*<RadzenPanelMenuItem Text="Galleries" Path="/cms/galleries" />*@
             <RadzenPanelMenuItem Text="Languages" Path="/cms/languages" />
             <RadzenPanelMenuItem Text="PageCategories" Path="/cms/page-categories" />
             <RadzenPanelMenuItem Text="Posts" Path="/cms/posts" />

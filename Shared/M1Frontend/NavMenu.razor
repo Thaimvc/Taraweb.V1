@@ -9,8 +9,8 @@
 
         <ul class="navbar-nav ms-auto navbar-top">
             @*<li class="nav-item"><a class="nav-link active d-inline" href="#" style="font-size: 0.6rem;"> @Lang</a></li>*@
-            <li class="nav-item"><a class="nav-link active d-inline" href="#" style="font-size: 0.6rem;">Register</a></li>
-            <li class="nav-item"><a class="nav-link d-inline" href="#" style="font-size:0.6rem">Login</a></li>
+            <li class="nav-item"><a class="nav-link active d-inline" href="https://taramember.ddns.net/membershipapp" style="font-size: 0.6rem;" target="_blank">Register</a></li>
+            <li class="nav-item"><a class="nav-link d-inline" href="https://taramember.ddns.net" style="font-size:0.6rem">Login</a></li>
             <li class="nav-item"></li>
         </ul>
      
@@ -40,12 +40,12 @@
         <div class="collapse navbar-collapse" id="navcol-1" style="font-size: 14px;">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link active" href="/web/@Lang">Home</a></li>
-                <li class="nav-item"><a class="nav-link active" href="/web/@Lang/about-us">About Us</a></li>
-                <li class="nav-item"><a class="nav-link" href="/@Lang/directory">Directory</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/web/@Lang/view/6/about-us">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://taramember.ddns.net" target="_blank">Directory</a></li>
                 <li class="nav-item"><a class="nav-link" href="/web/@Lang/news-events">News & Events</a></li>
                 <li class="nav-item"><a class="nav-link" href="/web/@Lang/seminars">Seminar</a></li>
-                <li class="nav-item"><a class="nav-link" href="/web/@Lang/how-to-join">How to Join</a></li>
-                <li class="nav-item"><a class="nav-link" href="/web/@Lang/contact-us">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://taramember.ddns.net/membershipapp">How to Join</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://taramember.ddns.net/disciplineAssociation">Contact Us</a></li>
             </ul>
         </div>
     </div>
@@ -69,7 +69,7 @@
         Console.WriteLine(e.Value.ToString());
         Lang = e.Value.ToString();
         await localStorage.SetItemAsync<string>("lang", Lang);
-        NavigationManager.NavigateTo("/web/"+ e.Value.ToString() + "/" + (spliturl.Length>5 ? spliturl[5]:""),true);
+        NavigationManager.NavigateTo("/web/"+ e.Value.ToString() + "/" + (spliturl.Length>5 ? string.Format("{0}/{1}/{2}", spliturl[5], spliturl[6], spliturl[7]):""),true);
         StateHasChanged();
     }
 }

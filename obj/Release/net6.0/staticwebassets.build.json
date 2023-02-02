@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "wmmQNoD+dFPVBEIP0UrkzFDzvXPYbNxJCufiaywRsrA=",
+  "Hash": "I9iYLAvKChCnMXsyvZXY7LLgAOdrbPKpczQ1+Hg+pNo=",
   "Source": "Taraweb",
   "BasePath": "_content/Taraweb",
   "Mode": "Default",
@@ -17,10 +17,10 @@
   ],
   "Assets": [
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/css/dark-base.css",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/css/dark-base.css",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "css/dark-base.css",
       "AssetKind": "All",
@@ -31,13 +31,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/css/dark-base.css"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/css/dark-base.css"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/css/dark.css",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/css/dark.css",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "css/dark.css",
       "AssetKind": "All",
@@ -48,13 +48,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/css/dark.css"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/css/dark.css"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/css/default-base.css",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/css/default-base.css",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "css/default-base.css",
       "AssetKind": "All",
@@ -65,13 +65,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/css/default-base.css"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/css/default-base.css"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/css/default.css",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/css/default.css",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "css/default.css",
       "AssetKind": "All",
@@ -82,13 +82,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/css/default.css"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/css/default.css"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/css/humanistic-base.css",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/css/humanistic-base.css",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "css/humanistic-base.css",
       "AssetKind": "All",
@@ -99,13 +99,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/css/humanistic-base.css"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/css/humanistic-base.css"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/css/humanistic.css",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/css/humanistic.css",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "css/humanistic.css",
       "AssetKind": "All",
@@ -116,13 +116,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/css/humanistic.css"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/css/humanistic.css"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/css/material-base.css",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/css/material-base.css",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "css/material-base.css",
       "AssetKind": "All",
@@ -133,13 +133,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/css/material-base.css"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/css/material-base.css"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/css/material.css",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/css/material.css",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "css/material.css",
       "AssetKind": "All",
@@ -150,13 +150,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/css/material.css"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/css/material.css"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/css/software-base.css",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/css/software-base.css",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "css/software-base.css",
       "AssetKind": "All",
@@ -167,13 +167,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/css/software-base.css"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/css/software-base.css"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/css/software.css",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/css/software.css",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "css/software.css",
       "AssetKind": "All",
@@ -184,13 +184,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/css/software.css"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/css/software.css"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/css/standard-base.css",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/css/standard-base.css",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "css/standard-base.css",
       "AssetKind": "All",
@@ -201,13 +201,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/css/standard-base.css"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/css/standard-base.css"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/css/standard.css",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/css/standard.css",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "css/standard.css",
       "AssetKind": "All",
@@ -218,13 +218,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/css/standard.css"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/css/standard.css"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/MaterialIcons-Regular.woff",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/MaterialIcons-Regular.woff",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "fonts/MaterialIcons-Regular.woff",
       "AssetKind": "All",
@@ -235,13 +235,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/MaterialIcons-Regular.woff"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/MaterialIcons-Regular.woff"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/roboto-v15-latin-300.woff",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/roboto-v15-latin-300.woff",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "fonts/roboto-v15-latin-300.woff",
       "AssetKind": "All",
@@ -252,13 +252,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/roboto-v15-latin-300.woff"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/roboto-v15-latin-300.woff"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/roboto-v15-latin-700.woff",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/roboto-v15-latin-700.woff",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "fonts/roboto-v15-latin-700.woff",
       "AssetKind": "All",
@@ -269,13 +269,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/roboto-v15-latin-700.woff"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/roboto-v15-latin-700.woff"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/roboto-v15-latin-regular.woff",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/roboto-v15-latin-regular.woff",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "fonts/roboto-v15-latin-regular.woff",
       "AssetKind": "All",
@@ -286,13 +286,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/roboto-v15-latin-regular.woff"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/roboto-v15-latin-regular.woff"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/roboto-v30-latin-300.woff",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/roboto-v30-latin-300.woff",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "fonts/roboto-v30-latin-300.woff",
       "AssetKind": "All",
@@ -303,13 +303,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/roboto-v30-latin-300.woff"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/roboto-v30-latin-300.woff"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/roboto-v30-latin-500.woff",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/roboto-v30-latin-500.woff",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "fonts/roboto-v30-latin-500.woff",
       "AssetKind": "All",
@@ -320,13 +320,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/roboto-v30-latin-500.woff"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/roboto-v30-latin-500.woff"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/roboto-v30-latin-700.woff",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/roboto-v30-latin-700.woff",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "fonts/roboto-v30-latin-700.woff",
       "AssetKind": "All",
@@ -337,13 +337,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/roboto-v30-latin-700.woff"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/roboto-v30-latin-700.woff"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/roboto-v30-latin-regular.woff",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/roboto-v30-latin-regular.woff",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "fonts/roboto-v30-latin-regular.woff",
       "AssetKind": "All",
@@ -354,13 +354,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/roboto-v30-latin-regular.woff"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/roboto-v30-latin-regular.woff"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/SourceSansPro-Black.woff",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/SourceSansPro-Black.woff",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "fonts/SourceSansPro-Black.woff",
       "AssetKind": "All",
@@ -371,13 +371,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/SourceSansPro-Black.woff"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/SourceSansPro-Black.woff"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/SourceSansPro-BlackIt.woff",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/SourceSansPro-BlackIt.woff",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "fonts/SourceSansPro-BlackIt.woff",
       "AssetKind": "All",
@@ -388,13 +388,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/SourceSansPro-BlackIt.woff"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/SourceSansPro-BlackIt.woff"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/SourceSansPro-Bold.woff",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/SourceSansPro-Bold.woff",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "fonts/SourceSansPro-Bold.woff",
       "AssetKind": "All",
@@ -405,13 +405,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/SourceSansPro-Bold.woff"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/SourceSansPro-Bold.woff"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/SourceSansPro-BoldIt.woff",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/SourceSansPro-BoldIt.woff",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "fonts/SourceSansPro-BoldIt.woff",
       "AssetKind": "All",
@@ -422,13 +422,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/SourceSansPro-BoldIt.woff"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/SourceSansPro-BoldIt.woff"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/SourceSansPro-ExtraLight.woff",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/SourceSansPro-ExtraLight.woff",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "fonts/SourceSansPro-ExtraLight.woff",
       "AssetKind": "All",
@@ -439,13 +439,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/SourceSansPro-ExtraLight.woff"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/SourceSansPro-ExtraLight.woff"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/SourceSansPro-ExtraLightIt.woff",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/SourceSansPro-ExtraLightIt.woff",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "fonts/SourceSansPro-ExtraLightIt.woff",
       "AssetKind": "All",
@@ -456,13 +456,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/SourceSansPro-ExtraLightIt.woff"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/SourceSansPro-ExtraLightIt.woff"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/SourceSansPro-It.woff",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/SourceSansPro-It.woff",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "fonts/SourceSansPro-It.woff",
       "AssetKind": "All",
@@ -473,13 +473,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/SourceSansPro-It.woff"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/SourceSansPro-It.woff"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/SourceSansPro-Light.woff",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/SourceSansPro-Light.woff",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "fonts/SourceSansPro-Light.woff",
       "AssetKind": "All",
@@ -490,13 +490,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/SourceSansPro-Light.woff"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/SourceSansPro-Light.woff"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/SourceSansPro-LightIt.woff",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/SourceSansPro-LightIt.woff",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "fonts/SourceSansPro-LightIt.woff",
       "AssetKind": "All",
@@ -507,13 +507,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/SourceSansPro-LightIt.woff"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/SourceSansPro-LightIt.woff"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/SourceSansPro-Regular.woff",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/SourceSansPro-Regular.woff",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "fonts/SourceSansPro-Regular.woff",
       "AssetKind": "All",
@@ -524,13 +524,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/SourceSansPro-Regular.woff"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/SourceSansPro-Regular.woff"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/SourceSansPro-Semibold.woff",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/SourceSansPro-Semibold.woff",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "fonts/SourceSansPro-Semibold.woff",
       "AssetKind": "All",
@@ -541,13 +541,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/SourceSansPro-Semibold.woff"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/SourceSansPro-Semibold.woff"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/SourceSansPro-SemiboldIt.woff",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/SourceSansPro-SemiboldIt.woff",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "fonts/SourceSansPro-SemiboldIt.woff",
       "AssetKind": "All",
@@ -558,13 +558,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/fonts/SourceSansPro-SemiboldIt.woff"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/fonts/SourceSansPro-SemiboldIt.woff"
     },
     {
-      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/Radzen.Blazor.js",
+      "Identity": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/Radzen.Blazor.js",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
-      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/",
+      "ContentRoot": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/",
       "BasePath": "_content/Radzen.Blazor",
       "RelativePath": "Radzen.Blazor.js",
       "AssetKind": "All",
@@ -575,7 +575,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.3.10/staticwebassets/Radzen.Blazor.js"
+      "OriginalItemSpec": "/Users/neab/.nuget/packages/radzen.blazor/4.4.9/staticwebassets/Radzen.Blazor.js"
     },
     {
       "Identity": "/Users/neab/Projects/Taraweb.V1/obj/Release/net6.0/scopedcss/bundle/Taraweb.styles.css",
@@ -678,6 +678,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/css/site.css"
+    },
+    {
+      "Identity": "/Users/neab/Projects/Taraweb.V1/wwwroot/img/about.png",
+      "SourceId": "Taraweb",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/neab/Projects/Taraweb.V1/wwwroot/",
+      "BasePath": "_content/Taraweb",
+      "RelativePath": "img/about.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/img/about.png"
     },
     {
       "Identity": "/Users/neab/Projects/Taraweb.V1/wwwroot/img/automation-factory-concept-with-3d-rendering-robot.png",
@@ -884,12 +901,12 @@
       "OriginalItemSpec": "wwwroot/img/newslist.png"
     },
     {
-      "Identity": "/Users/neab/Projects/Taraweb.V1/wwwroot/img/robots-car-plant_199107-834 (1).png",
+      "Identity": "/Users/neab/Projects/Taraweb.V1/wwwroot/img/robots-car-plant_199107-834.png",
       "SourceId": "Taraweb",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/neab/Projects/Taraweb.V1/wwwroot/",
       "BasePath": "_content/Taraweb",
-      "RelativePath": "img/robots-car-plant_199107-834 (1).png",
+      "RelativePath": "img/robots-car-plant_199107-834.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -898,7 +915,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/img/robots-car-plant_199107-834 (1).png"
+      "OriginalItemSpec": "wwwroot/img/robots-car-plant_199107-834.png"
+    },
+    {
+      "Identity": "/Users/neab/Projects/Taraweb.V1/wwwroot/img/spacer.png",
+      "SourceId": "Taraweb",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/neab/Projects/Taraweb.V1/wwwroot/",
+      "BasePath": "_content/Taraweb",
+      "RelativePath": "img/spacer.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/img/spacer.png"
     },
     {
       "Identity": "/Users/neab/Projects/Taraweb.V1/wwwroot/img/tech/image4.jpg",
@@ -2072,6 +2106,227 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/uploads/.DS_Store"
+    },
+    {
+      "Identity": "/Users/neab/Projects/Taraweb.V1/wwwroot/uploads/1b603a05-a21e-4c0e-823f-04e0baf3b166.jpg",
+      "SourceId": "Taraweb",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/neab/Projects/Taraweb.V1/wwwroot/",
+      "BasePath": "_content/Taraweb",
+      "RelativePath": "uploads/1b603a05-a21e-4c0e-823f-04e0baf3b166.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/1b603a05-a21e-4c0e-823f-04e0baf3b166.jpg"
+    },
+    {
+      "Identity": "/Users/neab/Projects/Taraweb.V1/wwwroot/uploads/31ba22d7-eadf-4dee-b168-06daccbaba80.jpg",
+      "SourceId": "Taraweb",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/neab/Projects/Taraweb.V1/wwwroot/",
+      "BasePath": "_content/Taraweb",
+      "RelativePath": "uploads/31ba22d7-eadf-4dee-b168-06daccbaba80.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/31ba22d7-eadf-4dee-b168-06daccbaba80.jpg"
+    },
+    {
+      "Identity": "/Users/neab/Projects/Taraweb.V1/wwwroot/uploads/3c87b834-6dbf-4b36-a8c4-fe24d5ee3dd4.png",
+      "SourceId": "Taraweb",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/neab/Projects/Taraweb.V1/wwwroot/",
+      "BasePath": "_content/Taraweb",
+      "RelativePath": "uploads/3c87b834-6dbf-4b36-a8c4-fe24d5ee3dd4.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/3c87b834-6dbf-4b36-a8c4-fe24d5ee3dd4.png"
+    },
+    {
+      "Identity": "/Users/neab/Projects/Taraweb.V1/wwwroot/uploads/3f03535e-5b1e-42e6-8cfb-ae367227d7ec.png",
+      "SourceId": "Taraweb",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/neab/Projects/Taraweb.V1/wwwroot/",
+      "BasePath": "_content/Taraweb",
+      "RelativePath": "uploads/3f03535e-5b1e-42e6-8cfb-ae367227d7ec.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/3f03535e-5b1e-42e6-8cfb-ae367227d7ec.png"
+    },
+    {
+      "Identity": "/Users/neab/Projects/Taraweb.V1/wwwroot/uploads/3f7d0308-df56-4290-a5cb-20dcb607be48.jpg",
+      "SourceId": "Taraweb",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/neab/Projects/Taraweb.V1/wwwroot/",
+      "BasePath": "_content/Taraweb",
+      "RelativePath": "uploads/3f7d0308-df56-4290-a5cb-20dcb607be48.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/3f7d0308-df56-4290-a5cb-20dcb607be48.jpg"
+    },
+    {
+      "Identity": "/Users/neab/Projects/Taraweb.V1/wwwroot/uploads/414c2db7-f5e1-4962-91c8-b18074c4812f.png",
+      "SourceId": "Taraweb",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/neab/Projects/Taraweb.V1/wwwroot/",
+      "BasePath": "_content/Taraweb",
+      "RelativePath": "uploads/414c2db7-f5e1-4962-91c8-b18074c4812f.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/414c2db7-f5e1-4962-91c8-b18074c4812f.png"
+    },
+    {
+      "Identity": "/Users/neab/Projects/Taraweb.V1/wwwroot/uploads/4aede83e-fbcb-490a-aabe-80f4ad3b27d8.png",
+      "SourceId": "Taraweb",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/neab/Projects/Taraweb.V1/wwwroot/",
+      "BasePath": "_content/Taraweb",
+      "RelativePath": "uploads/4aede83e-fbcb-490a-aabe-80f4ad3b27d8.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/4aede83e-fbcb-490a-aabe-80f4ad3b27d8.png"
+    },
+    {
+      "Identity": "/Users/neab/Projects/Taraweb.V1/wwwroot/uploads/4f314cad-3f32-44b5-ae9f-5a847a739506.jpg",
+      "SourceId": "Taraweb",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/neab/Projects/Taraweb.V1/wwwroot/",
+      "BasePath": "_content/Taraweb",
+      "RelativePath": "uploads/4f314cad-3f32-44b5-ae9f-5a847a739506.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/4f314cad-3f32-44b5-ae9f-5a847a739506.jpg"
+    },
+    {
+      "Identity": "/Users/neab/Projects/Taraweb.V1/wwwroot/uploads/5e607329-aa93-4124-a467-a373b06f52dc.png",
+      "SourceId": "Taraweb",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/neab/Projects/Taraweb.V1/wwwroot/",
+      "BasePath": "_content/Taraweb",
+      "RelativePath": "uploads/5e607329-aa93-4124-a467-a373b06f52dc.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/5e607329-aa93-4124-a467-a373b06f52dc.png"
+    },
+    {
+      "Identity": "/Users/neab/Projects/Taraweb.V1/wwwroot/uploads/776868bd-4030-424b-a0a2-20797ccfd987.png",
+      "SourceId": "Taraweb",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/neab/Projects/Taraweb.V1/wwwroot/",
+      "BasePath": "_content/Taraweb",
+      "RelativePath": "uploads/776868bd-4030-424b-a0a2-20797ccfd987.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/776868bd-4030-424b-a0a2-20797ccfd987.png"
+    },
+    {
+      "Identity": "/Users/neab/Projects/Taraweb.V1/wwwroot/uploads/abc0d884-97ae-4bf1-822d-986685fb504b.jpg",
+      "SourceId": "Taraweb",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/neab/Projects/Taraweb.V1/wwwroot/",
+      "BasePath": "_content/Taraweb",
+      "RelativePath": "uploads/abc0d884-97ae-4bf1-822d-986685fb504b.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/abc0d884-97ae-4bf1-822d-986685fb504b.jpg"
+    },
+    {
+      "Identity": "/Users/neab/Projects/Taraweb.V1/wwwroot/uploads/b2a3ab13-0e6e-4a7d-bb42-956255e6c914.jpg",
+      "SourceId": "Taraweb",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/neab/Projects/Taraweb.V1/wwwroot/",
+      "BasePath": "_content/Taraweb",
+      "RelativePath": "uploads/b2a3ab13-0e6e-4a7d-bb42-956255e6c914.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/b2a3ab13-0e6e-4a7d-bb42-956255e6c914.jpg"
+    },
+    {
+      "Identity": "/Users/neab/Projects/Taraweb.V1/wwwroot/uploads/b4a6ab0d-1652-4078-b92e-1d7e692bee97.jpg",
+      "SourceId": "Taraweb",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/neab/Projects/Taraweb.V1/wwwroot/",
+      "BasePath": "_content/Taraweb",
+      "RelativePath": "uploads/b4a6ab0d-1652-4078-b92e-1d7e692bee97.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/b4a6ab0d-1652-4078-b92e-1d7e692bee97.jpg"
     },
     {
       "Identity": "/Users/neab/Projects/Taraweb.V1/wwwroot/uploads/bannertara.png",

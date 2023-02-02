@@ -20,6 +20,24 @@ namespace Taraweb.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Banner>(entity =>
+            {
+                entity.ToTable("Banner");
+
+                entity.Property(e => e.DateFinish).HasColumnType("datetime");
+
+                entity.Property(e => e.DateStart).HasColumnType("datetime");
+
+                entity.Property(e => e.ImageUrl)
+                    .IsRequired()
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("ImageURL");
+
+                entity.Property(e => e.Name)
+                    .HasMaxLength(500)
+                    .IsUnicode(false);
+            });
             modelBuilder.Entity<Gallery>(entity =>
             {
                 entity.ToTable("Gallery");
@@ -47,6 +65,7 @@ namespace Taraweb.Data
                     .IsRequired()
                     .HasMaxLength(500);
             });
+
 
             modelBuilder.Entity<Language>(entity =>
             {
@@ -148,5 +167,7 @@ namespace Taraweb.Data
 
         public DbSet<Taraweb.Models.TarawebM1.Post> Posts { get; set; }
         public DbSet<Taraweb.Models.TarawebM1.PostContent> PostContents { get; set; }
+
+        public virtual DbSet<Banner> Banners { get; set; }
     }
 }
